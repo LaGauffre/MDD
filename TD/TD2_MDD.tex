@@ -1,0 +1,282 @@
+\documentclass[11pt, answers]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsopn, color, tikz, mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{tipa}
+\usepackage{hyperref}
+
+
+% Style
+\setlength\parindent{0pt}
+\shadedsolutions
+
+% Define course info
+\def\semester{Semestre 2}
+\def\course{Modèle de duréee M1 DUAS}
+\def\name{P.-O. Goffard}
+%\def\quizdate{10/5, 10/6}
+\def\hwknum{}
+%\def\title{\MakeUppercase{Homework \hwknum -- quiz \quizdate }}
+\def\title{\MakeUppercase{TD 2: Approche non-paramétrique de la survie.}}
+% Distributions.
+\newcommand*{\UnifDist}{\mathsf{Unif}}
+\newcommand*{\ExpDist}{\mathsf{Exp}}
+\newcommand*{\DepExpDist}{\mathsf{DepExp}}
+\newcommand*{\GammaDist}{\mathsf{Gamma}}
+\newcommand*{\LognormalDist}{\mathsf{LogNorm}}
+\newcommand*{\WeibullDist}{\mathsf{Weib}}
+\newcommand*{\ParetoDist}{\mathsf{Par}}
+\newcommand*{\NormalDist}{\mathsf{Normal}}
+
+\newcommand*{\GeometricDist}{\mathsf{Geom}}
+\newcommand*{\NegBinomialDist}{\mathsf{NegBin}}
+\newcommand*{\BinomialDist}{\mathsf{Bin}}
+\newcommand*{\PoissonDist}{\mathsf{Poisson}}
+
+% Sets of numbers.
+\newcommand*{\RL}{\mathbb{R}}
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\NZ}{\mathbb{N}_0}
+% \newcommand*{\NL}{\mathbb{N}_+}
+
+\newcommand*{\cond}{\mid}
+\newcommand*{\given}{\,;\,}
+
+%Probability symbols
+\newcommand*{\Prob}{\mathbb{P}}
+\newcommand*{\Q}{\mathbb{Q}}
+\newcommand*{\E}{\mathbb{E}}
+\newcommand*{\F}{\mathcal{F}}
+% Regarding spacing and abbreviations.
+\usepackage{xspace}
+
+% Acronyms
+% \@\xspace doesn't add space if next char is punctuation
+% However, these will give 2 .'s if used at end of sentence.
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ps}{p.s.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\va}{v.a.\@\xspace}
+\newcommand*{\iid}{i.i.d.\@\xspace}
+\newcommand*{\ssi}{s.s.i.\@\xspace}
+\newcommand*{\cf}{c.f.\@\xspace}
+\newcommand*{\pdf}{p.d.f.\@\xspace}
+\newcommand*{\pmf}{p.m.f.\@\xspace}
+\newcommand*{\cdf}{c.d.f.\@\xspace}
+\newcommand*{\SMC}{\textbf{SMC}\@\xspace}
+\newcommand*{\MCMC}{\textbf{MCMC}\@\xspace}
+\newcommand*{\VF}{\textbf{VF}\@\xspace}
+
+
+\newcommand*{\iidSim}{\overset{\mathrm{i.i.d.}}{\sim}}
+\newcommand*{\bt}{\bm{\theta}}
+\newcommand*{\bTheta}{\bm{\Theta}}
+\newcommand*{\bbeta}{\bm{\beta}}
+\newcommand*{\bx}{\mathbf{x}}
+\newcommand*{\bs}{\bm{s}}
+\newcommand*{\bu}{\bm{u}}
+\newcommand*{\bn}{\bm{n}}
+
+% Roman versions of things.
+\newcommand*{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand*{\e}{\mathrm{e}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand*{\norm}[1]{\lVert{} #1\rVert}
+
+% \DeclarePairedDelimiterXPP{\ind}[1]{\ind_}{\{}{\}}{}{#1}
+\newcommand*{\ind}{\mathbb{I}}
+\def\euro{\mbox{\raisebox{.25ex}{{\it =}}\hspace{-.5em}{\sf C}}}
+  \everymath{\displaystyle}
+% \newcommand{\limsup}{\overline{\lim}\,}            % blackboard P
+% \newcommand{\liminf}{\underline{\lim}\,}            % blackboard P
+
+\begin{document}
+
+% Heading
+{\center \textsc{\Large\title}\\
+	\vspace*{1em}
+	\course -- \semester\\
+	\name\\
+	\vspace*{2em}
+	\hrule
+\vspace*{2em}}
+
+\begin{questions}
+\question Soit une variable aléatoire de fonction de hasard constante par morceau avec
+$$
+h(t) = \sum_{l=1}^k\alpha_l\ind_{[v_{l},v_{l+1})}(t),
+$$
+où $0=v_1 <v_2\ldots< v_{k+1} = \infty$, et $\alpha_1,\ldots, \alpha_k\geq 0$.
+\begin{parts}
+	\part Si $k = 1$, quel est la loi de $T$.
+	\begin{solution}
+	Il s'agit de la loi exponentielle de paramètre $\theta_1$
+	\end{solution}
+	\part Pour $k> 1$, donner l'expression de la fonction de survie
+.
+\begin{solution}
+On a 
+\begin{eqnarray*}
+H(t) &=& \int_0^t h(s)\text{d}s\\
+&=& \sum_{l=1}^k\alpha_l(v_{l+1}-v_{l})\ind_{t>v_l}+ \sum_{l=1}^k\alpha_l(t-v_{l})\ind_{t\in\left[v_{l}, v_{l+1}\right)}\\
+&=& \sum_{l=1}^k\alpha_l(t\land v_{l+1}-v_{l})_+ = \sum_{l=1}^k\max(x_i\land v_{l+1} - v_{l}, 0)
+\end{eqnarray*}
+puis $S(t) = \exp[-H(t)]$.
+\end{solution}
+% \part Donner l'espérance de la durée résiduelle au dela du seuil $t_0$, définie par 
+% $$
+% \E(T-t_0|T>t_0),
+% $$
+% en fonction de $S(t_0)$ et de la fonction de hasard cumulée.
+% \begin{solution}
+% \begin{eqnarray*}
+% \E(T-t_0|T>t_0)&=&\E[(T-t_0)\ind_{T>t_0}]/S(t)\\
+% &=& \frac{1}{S(t_0)}\int_{t_0}^\infty (t-t_0) f(t)\text{d}t\\
+% &=& \frac{1}{S(t_0)}\int_{t_0}^\infty S(t)\text{d}t\\
+% &=& \frac{1}{S(t_0)}\int_{t_0}^\infty \exp[-H(t)]\text{d}t\\
+% \end{eqnarray*}
+% \end{solution}
+\part Soit un échantillon de $n$ observations \iid et censurée à droite 
+$$
+\mathcal{D} = (x_i, \delta_i) = (t_i\land c_i, \ind_{t_i\leq c_i}),\text{ }i = 1,\ldots, n.
+$$
+Donner l'estimateur du maximum de vraisemblance des paramètres $\alpha_l$ pour $l = 1,\ldots, k$. L'estimateur obtenu porte le nom d'estimateur de Hoem \cite{Hoem1971}, il est très populaire en science actuarielle.\\
+\underline{Indication:} L'estimateur doit faire apparaitre un nombre d'évènement dans le segment $[v_{l},v_{l+1})$
+$$
+d(v_l) = \sum_{i=1}^n\delta_i\ind_{[v_{l},v_{l+1})}(x_i)
+$$
+et une exposition au risque
+$$
+e(v_l) = \sum_{i=1}^n(x_i\land v_{l+1} - v_{l})_+ =\sum_{i=1}^n\max(x_i\land v_{l+1} - v_{l}, 0),
+$$
+qui s'interprête ici comme la somme des temps passés par les individus sur le segment $[v_l, v_{l+1})$.
+\begin{solution}
+La vraisemblance s'écrit 
+\begin{eqnarray*}
+\mathcal{L}(\mathcal{D};\theta)&=&\prod_{i=1}^nh(x_i)^{\delta_i}S(x_i)\\
+&=& \prod_{i=1}^n\prod_{l=1}^k\alpha_l^{\delta_i\ind_{[v_l, v_{l+1})}(x_i)}\exp\left\{ -\alpha_l(x_i\land v_{l+1} - v_{l})_+\right\}\\
+&=&\prod_{l=1}^k\alpha_l^{d(v_l)}\exp\left\{ -\alpha_le(v_l)\right\}.\\
+\end{eqnarray*}
+La log-vraisemblance est donnée par 
+$$
+l(\mathcal{D};\theta) = \sum_{l=1}^k\ln(\alpha_l)d(v_l)-\alpha_le(v_l)
+$$
+On en déduite l'estimateur du maximum de vraisemblance en résolvant les équations du score avec 
+$$
+\widehat{\alpha_l} = \frac{d(v_l)}{e(v_l)}.
+$$
+\end{solution}
+\part Donner une estimation de la matrice d'information de Fisher. En déduire une estimation de la variance asymptotique (valide pour un grand nombre d'observations) et un intervalle de confiance de niveau $\epsilon$ pour les paramètres.
+\begin{solution}
+La matrice d'information de Fisher est estimée par 
+$$
+(\widehat{I}_n)_{i,j} = -\frac{\partial}{\partial\alpha_i\partial\alpha_j}l(\mathcal{D};\theta) = \begin{cases}e(v_i)^2/d(v_i),&\text{ si }i=j,\\
+0,&\text{ sinon.}
+\end{cases}
+$$
+On en déduit que 
+$$
+\mathbb{V}(\widehat{\alpha}_l) = d(v_l)/e(v_l)^2
+$$
+et 
+$$
+\alpha_l\in[\widehat{\alpha}_l \pm z_{1-\epsilon/2}\mathbb{V}(\widehat{\alpha}_l)]
+$$
+\end{solution}
+\part Peut on proposer un test pour l'hypothèse $\alpha_1=\ldots = \alpha_k = \alpha_O$.
+\begin{solution}
+On peut proposer un test de Wald avec comme statistique de test
+$$
+\,^t(\alpha-\alpha_0) \widehat{I}_n^{-1}(\alpha-\alpha_0) \sim\NormalDist(0,\text{Id})
+$$
+\end{solution}
+\end{parts}
+\question Le modèle de Gompertz-Makeham, voir \cite{Makeham1860}, définie la fonction de hasard d'une v.a T par 
+$$
+h(t) = a+b\cdot c^t,
+$$
+avec $a,b,c\geq 0$. il s'agit d'un modèle adaptté à la modélisation de la durée de vie humaine, les paramètre $b$ et $c$ accomode l'augmentation progressive du risque avec l'âge, tandis que le paramètre $a$ permet de prendre en compte les décès accidentels.
+\begin{parts}
+\part Donner l'expression de la fonction de hasard cumulé, de la  survie et de la densité de $T$.
+\begin{solution}
+La fonction de hasard cumulé est donnée par 
+$$
+H(t) = \int_0^th(s)\text{ds} = at+\frac{b}{\ln c}\left(c^t - 1\right).
+$$
+La fonction de survie est donnée par 
+$$
+S(t) = \exp(-H(t)),
+$$
+et la fonction de densité par 
+$$
+f(t) = h(t)S(t).
+$$
+\end{solution}
+\part En présence de censure à droite, écrire la log vraisemblance du modèle pour un échantillon
+$$
+(x_i,\delta_i) = (t_i\land c_i, \ind_{t_i\leq c_i}),\text{ }i = 1,\ldots, n.
+$$
+\begin{solution}
+La log vraisemblance en présence de données censurées s'écrit
+\begin{eqnarray*}
+l(\mathcal{D};\theta)&=& \sum_{k=1}^n\delta_k\log h(x_k;\theta)+\sum_{k=1}^n\log S(x_k;\theta)\\
+&=& \delta_k\log(a+bc^t) + \sum_{k=1}^n\left[-ax_k - \frac{b}{\ln c}(c^{x_{k}}-1)\right].\\
+\end{eqnarray*}
+\end{solution}
+\part Calculer la dérivée première par rapport à chacun des paramètres du modèle (soit le gradient).
+\begin{solution}
+On a 
+$$
+\frac{\partial}{\partial a}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k}{a+bc^{x_k}} - \sum_{k=1}^n x_k,
+$$
+
+$$
+\frac{\partial}{\partial b}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k c^{x_k}}{a+bc^{x_k}} - \sum_{k=1}^n \frac{c^{x_k}-1}{\ln c}
+$$
+et
+$$
+\frac{\partial}{\partial c}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k bx_k c^{x_k-1}}{a+bc^{x_k}} 
++ \sum_{k=1}^n \left[\frac{b(c^{x_k}-1)}{c(\ln c)^2}-\frac{b x_k c^{x_k}}{\ln c}\right].
+$$
+\end{solution}
+\part Ecrire un code R permettant de faire l'inférence du modèle de Gompertz-Makeham. Le code doit comprendre
+\begin{enumerate}
+\item Ecrire une fonction pour générer des données depuis le modèle de GM. Simuler un échantillon de $5,000$ observations $t_1,\ldots, t_{5000}$ avec
+
+$$
+a= 0.001, b= 0.0001\text{ et } c= 1.1.
+$$
+Puis tracer un histogramme.
+\item  Vérifier que l'échantilloneur fonctionne bien en comparant les taux de hasard théorique et empirique. Les taux de hasard empirique doivent être estimé de manière non paramétrique. On définit une grille de points equidistants 
+$$
+v_0<v_1<\ldots <v_k
+$$
+et on compare $d(v_k)/n(v_k)$ à $h(v_k)  (v_{k+1}-v_k)$ via un graphique qui comprend les deux courbes de taux de hasard. (Prenez un écart de $1$ entre les $v_k$).
+\item Ecrire un code qui retourne l'estimateur du maximum de vraisemblance des paramètres du modèle de Gompertz-Makeham à partir d'un échantillon comprenant des données censurés à droite. On utilisera la fonction \texttt{optim} en renseignant le gradient de la log vraisemblance. Donner la valeur estimée des paramètre sur l'échantillon généré précédemment en ajoutant une censure à droite non informative tel que 
+$$
+c_1,\ldots, c_{5000}\sim \text{Exp}(1/\bar t),
+$$
+où $\bar{t} = \frac{1}{n}\sum_k t_k$. Prenez comme valeurs initiales dans l'algorithme d'optimisation les valeurs suivantes 
+$$
+a =0.01, b = 0.01\text{, et }c = 1.2
+$$
+\item  Comparer les fonctions de survies théoriques, empirique estimée via Kaplan-Meier et estimé paramétriquement suivant le modèle de Gompertz Makeham.
+\end{enumerate}
+\end{parts}
+% \question Etude de la loi inverse Gaussienne
+% \begin{parts}
+% \part Expression de la fdr
+% \part Expression de la transformée de Laplace
+
+% \part Expression de l'estimateur par la méthode des moments et distribution de l'estimateur
+
+% \part Mise en place d'un test d'adéquation de type CvM en présence de données censurées (type III), remplacement de la fdr empirique par KP. Estimation via le maximum de vraisemblance.
+% \end{parts}
+\end{questions}
+\bibliography{../lecture_notes/mdd.bib}
+\bibliographystyle{plain}
+\end{document}

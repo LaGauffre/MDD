@@ -1,0 +1,210 @@
+\begin{thebibliography}{29}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Aalen(1978)]{Aalen1978}
+Odd Aalen.
+\newblock Nonparametric inference for a family of counting processes.
+\newblock \emph{The Annals of Statistics}, 6\penalty0 (4), jul 1978.
+\newblock \doi{10.1214/aos/1176344247}.
+
+\bibitem[Akaike(1998)]{Akaike1998}
+Hirotogu Akaike.
+\newblock Information theory and an extension of the maximum likelihood
+  principle.
+\newblock In \emph{Springer Series in Statistics}, pages 199--213. Springer New
+  York, 1998.
+\newblock \doi{10.1007/978-1-4612-1694-0_15}.
+
+\bibitem[Barigou et~al.(2022)Barigou, Goffard, Loisel, and Salhi]{Barigou2022}
+Karim Barigou, Pierre-Olivier Goffard, St{\'{e}}phane Loisel, and Yahia Salhi.
+\newblock Bayesian model averaging for mortality forecasting using
+  leave-future-out validation.
+\newblock \emph{International Journal of Forecasting}, mar 2022.
+\newblock \doi{10.1016/j.ijforecast.2022.01.011}.
+
+\bibitem[Boumezoued(2020)]{Boumezoued2020}
+Alexandre Boumezoued.
+\newblock Improving {HMD} mortality estimates with {HFD} fertility data.
+\newblock \emph{North American Actuarial Journal}, 25\penalty0 (sup1):\penalty0
+  S255--S279, jan 2020.
+\newblock \doi{10.1080/10920277.2019.1672567}.
+
+\bibitem[Breslow(1975)]{Breslow1975}
+N.~E. Breslow.
+\newblock Analysis of survival data under the proportional hazards model.
+\newblock \emph{International Statistical Review / Revue Internationale de
+  Statistique}, 43\penalty0 (1):\penalty0 45, apr 1975.
+\newblock \doi{10.2307/1402659}.
+
+\bibitem[Cairns et~al.(2006)Cairns, Blake, and Dowd]{Cairns2006}
+Andrew J.~G. Cairns, David Blake, and Kevin Dowd.
+\newblock A two-factor model for stochastic mortality with parameter
+  uncertainty: Theory and calibration.
+\newblock \emph{Journal of Risk and Insurance}, 73\penalty0 (4):\penalty0
+  687--718, dec 2006.
+\newblock \doi{10.1111/j.1539-6975.2006.00195.x}.
+
+\bibitem[Clayton and Schifflers(1987)]{Clayton1987}
+D.~Clayton and E.~Schifflers.
+\newblock Models for temporal variation in cancer rates. {II}:
+  Age{\textendash}period{\textendash}cohort models.
+\newblock \emph{Statistics in Medicine}, 6\penalty0 (4):\penalty0 469--481, jun
+  1987.
+\newblock \doi{10.1002/sim.4780060406}.
+
+\bibitem[Cox(1972)]{Cox1972}
+D.~R. Cox.
+\newblock Regression models and life-tables.
+\newblock \emph{Journal of the Royal Statistical Society: Series B
+  (Methodological)}, 34\penalty0 (2):\penalty0 187--202, jan 1972.
+\newblock \doi{10.1111/j.2517-6161.1972.tb00899.x}.
+
+\bibitem[Currie(2014)]{Currie2014}
+Iain~D. Currie.
+\newblock On fitting generalized linear and non-linear models of mortality.
+\newblock \emph{Scandinavian Actuarial Journal}, 2016\penalty0 (4):\penalty0
+  356--383, jul 2014.
+\newblock \doi{10.1080/03461238.2014.928230}.
+
+\bibitem[Denuit and Goderniaux(2005)]{Denuit2005}
+Michel Denuit and Anne-C{\'e}cile Goderniaux.
+\newblock Closing and projecting lifetables using log-linear models.
+\newblock \emph{Bulletin of the Swiss Association of Actuaries}, page~29, 2005.
+
+\bibitem[Gompertz(1825)]{1825}
+Gompertz.
+\newblock On the nature of the function expressive of the law of human
+  mortality, and on a new mode of determining the value of life
+  contingencies.https://www.jstor.org/stable/41140508
+  https://doi.org/10.1017/s0020268100040257.
+\newblock \emph{Philosophical Transactions of the Royal Society of London},
+  115:\penalty0 513--583, dec 1825.
+\newblock \doi{10.1098/rstl.1825.0026}.
+
+\bibitem[GRAMBSCH and THERNEAU(1994)]{GRAMBSCH1994}
+PATRICIA~M. GRAMBSCH and TERRY~M. THERNEAU.
+\newblock Proportional hazards tests and diagnostics based on weighted
+  residuals.
+\newblock \emph{Biometrika}, 81\penalty0 (3):\penalty0 515--526, 1994.
+\newblock \doi{10.1093/biomet/81.3.515}.
+
+\bibitem[Guibert and Planchet(2017)]{Guibert2017}
+Quentin Guibert and Fr{\'e}d{\'e}ric Planchet.
+\newblock {UTILISATION DES ESTIMATEURS DE KAPLAN-MEIER PAR G{\'E}N{\'E}RATION
+  ET DE HOEM POUR LA CONSTRUCTION DE TABLES DE MORTALIT{\'E} PROSPECTIVES}.
+\newblock working paper or preprint, April 2017.
+\newblock URL \url{https://hal.science/hal-01509483}.
+
+\bibitem[Heligman and Pollard(1980)]{Heligman1980}
+L.~Heligman and J.~H. Pollard.
+\newblock The age pattern of mortality.
+\newblock \emph{Journal of the Institute of Actuaries}, 107\penalty0
+  (1):\penalty0 49--80, jan 1980.
+\newblock \doi{10.1017/s0020268100040257}.
+
+\bibitem[Hoem(1971)]{Hoem1971}
+Jan~M. Hoem.
+\newblock Point estimation of forces of transition in demographic models.
+\newblock \emph{Journal of the Royal Statistical Society: Series B
+  (Methodological)}, 33\penalty0 (2):\penalty0 275--289, jul 1971.
+\newblock \doi{10.1111/j.2517-6161.1971.tb00879.x}.
+
+\bibitem[Hunt and Blake(2020)]{Hunt2020}
+Andrew Hunt and David Blake.
+\newblock On the structure and classification of mortality models.
+\newblock \emph{North American Actuarial Journal}, 25\penalty0 (sup1):\penalty0
+  S215--S234, feb 2020.
+\newblock \doi{10.1080/10920277.2019.1649156}.
+
+\bibitem[Kaplan and Meier(1958)]{Kaplan1958}
+E.~L. Kaplan and Paul Meier.
+\newblock Nonparametric estimation from incomplete observations.
+\newblock \emph{Journal of the American Statistical Association}, 53\penalty0
+  (282):\penalty0 457--481, jun 1958.
+\newblock \doi{10.1080/01621459.1958.10501452}.
+
+\bibitem[Lee and Carter(1992)]{Lee1992}
+Ronald~D. Lee and Lawrence~R. Carter.
+\newblock Modeling and forecasting u.s. mortality.
+\newblock \emph{Journal of the American Statistical Association}, 87\penalty0
+  (419):\penalty0 659--671, sep 1992.
+\newblock \doi{10.1080/01621459.1992.10475265}.
+
+\bibitem[Makeham(1860)]{Makeham1860}
+William~Matthew Makeham.
+\newblock On the law of mortality and the construction of annuity tables.
+\newblock \emph{The Assurance Magazine and Journal of the Institute of
+  Actuaries}, 8\penalty0 (6):\penalty0 301--310, jan 1860.
+\newblock \doi{10.1017/s204616580000126x}.
+
+\bibitem[Nelson(1972)]{Nelson1972}
+Wayne Nelson.
+\newblock Theory and applications of hazard plotting for censored failure data.
+\newblock \emph{Technometrics}, 14\penalty0 (4):\penalty0 945--966, nov 1972.
+\newblock \doi{10.1080/00401706.1972.10488991}.
+
+\bibitem[Peto and Peto(1972)]{Peto1972}
+Richard Peto and Julian Peto.
+\newblock Asymptotically efficient rank invariant test procedures.
+\newblock \emph{Journal of the Royal Statistical Society. Series A (General)},
+  135\penalty0 (2):\penalty0 185, 1972.
+\newblock \doi{10.2307/2344317}.
+
+\bibitem[Schoenfeld(1982)]{SCHOENFELD1982}
+David Schoenfeld.
+\newblock Partial residuals for the proportional hazards regression model.
+\newblock \emph{Biometrika}, 69\penalty0 (1):\penalty0 239--241, 1982.
+\newblock \doi{10.1093/biomet/69.1.239}.
+
+\bibitem[Schwarz(1978)]{Schwarz1978}
+Gideon Schwarz.
+\newblock Estimating the dimension of a model.
+\newblock \emph{The Annals of Statistics}, 6\penalty0 (2), mar 1978.
+\newblock \doi{10.1214/aos/1176344136}.
+
+\bibitem[Spiekerman and Lin(1998)]{Spiekerman1998}
+C.~F. Spiekerman and D.~Y. Lin.
+\newblock Marginal regression models for multivariate failure time data.
+\newblock \emph{Journal of the American Statistical Association}, 93\penalty0
+  (443):\penalty0 1164--1175, sep 1998.
+\newblock \doi{10.1080/01621459.1998.10473777}.
+
+\bibitem[Thatcher et~al.(1998)Thatcher, Kannisto, and Vaupel]{Thatcher1998}
+A~Roger Thatcher, V{\"a}in{\"o} Kannisto, and James~W Vaupel.
+\newblock The force of mortality at ages 80 to 120.
+\newblock 1998.
+
+\bibitem[Villegas et~al.(2018)Villegas, Kaishev, and
+  Millossovich]{Villegas2018}
+Andr{\'{e}}s~M. Villegas, Vladimir~K. Kaishev, and Pietro Millossovich.
+\newblock Stmomo: An r package for stochastic mortality modeling.
+\newblock \emph{Journal of Statistical Software}, 84\penalty0 (3), 2018.
+\newblock \doi{10.18637/jss.v084.i03}.
+
+\bibitem[Wasserman(2013)]{Wasserman2013}
+Larry Wasserman.
+\newblock \emph{All of Statistics A Concise Course in Statistical Inference}.
+\newblock Springer, 2013.
+\newblock ISBN 9780387217369.
+
+\bibitem[Weinert(2007)]{Weinert2007}
+Howard~L. Weinert.
+\newblock Efficient computation for whittaker-henderson smoothing.
+\newblock \emph{Computational Statistics {\&} Data Analysis}, 52\penalty0
+  (2):\penalty0 959--974, oct 2007.
+\newblock \doi{10.1016/j.csda.2006.11.038}.
+
+\bibitem[Wilmoth et~al.(2007)Wilmoth, Andreev, Jdanov, Glei, Boe, Bubenheim,
+  Philipov, Shkolnikov, and Vachon]{Wilmoth2007}
+John~R Wilmoth, Kirill Andreev, Dmitri Jdanov, Dana~A Glei, C~Boe, M~Bubenheim,
+  D~Philipov, V~Shkolnikov, and P~Vachon.
+\newblock Methods protocol for the human mortality database.
+\newblock \emph{University of California, Berkeley, and Max Planck Institute
+  for Demographic Research, Rostock. URL: http://mortality. org [version
+  31/05/2007]}, 9:\penalty0 10--11, 2007.
+
+\end{thebibliography}

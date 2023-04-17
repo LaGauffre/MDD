@@ -1,0 +1,247 @@
+% !TEX root = ../main_lecture_notes.tex
+\chapter{Approche non paramétrique}\label{sec:nonparametric}
+Soit $T$ une variable aléatoire positive et un échantillon $t_1,\ldots, t_n$ de réalisations \iid de $T$. L'estimateur naturelle de la fonction de survie de $T$ est donnée par 
+\begin{equation}\label{eq:fonction_survie_empirique}
+\widehat{S}_n(t) =\frac{1}{n}\sum_{k=1}^n\ind_{t_k >t}.
+\end{equation}
+La loi des grands nombre indique qu'il s'agit d'un estimateur convergent de la fonction de survie. Dans une analyse de survie, nous devons prendre en compte le phénomène de censure. Pour chaque observation $k=1,\ldots, n$, nous observons 
+$$
+\Data = (x_k, \delta_k) = \left(t_k\land c_k, \ind_{t_k<c_k}\right),
+$$
+où $(c_k)_{k\geq1}$ est une suite de réels positives. Nous savons si l'observation est censurée via $\delta_k$, auquel cas la valeur censurée $c_k$ remplace la réalisation $t_k$. L'utilisation des $x_k$ brutalement dans l'estimateur \eqref{eq:fonction_survie_empirique} biaise l'estimation. Un estimateur de la fonction de survie qui tient compte de la censure est le suivant 
+\begin{equation}\label{eq:fonction_survie_empirique_censure}
+\widehat{S}_n(t) =\frac{\sum_{k=1}^n\ind_{x_k >t}}{\sum_{k=1}^n\ind_{x_k >t} + \sum_{k=1}^n\ind_{x_k \leq t}\delta_k},
+\end{equation}
+Une alternative qui exploite mieux l'information disponible est l'estimateur de Kaplan-Meier.
+\section{Estimateur de Kaplan-Meier et Nelson-Aalen}
+
+Ce problème de valeurs observées censurées a été contournée par \citet{Kaplan1958} qui ont proposé un estimateur "produit-limite". Supposons que $T$ soit discrète à valeur dans $\{v_0,v_1,\ldots,\}$ tel que $0=v_0<v_1<\ldots$. Notons 
+$$
+h_0 =\Prob(T=v_0)\text{, et } h_k=\Prob(T=v_k|T> v_{k})\text{ pour } k\geq 1.
+$$
+\begin{remark}
+Si $T$ est un \va continu alors on peu discrétiser la loi de $T$ en approchant $T$ par $h\lfloor T/h\rfloor$. Comme $h\lfloor T/h\rfloor\rightarrow T$ lorsque $h\rightarrow 0$ et l'approximation est d'autant meilleur que le pas de discrétisation $h$ est petit. 
+\end{remark}
+\begin{theo}
+L'estimateur de Kaplan-Meier est donnée par 
+\begin{equation}\label{eq:estimateur_KP}
+\widehat{S_n}^{\text{KP}}(t) = \prod_{k: v_k\leq t}\left[1-\frac{d(v_k)}{n(v_k)}\right],
+\end{equation}
+où $d(v_k) = \sum_{i = 1}^n\delta_i\ind_{x_i\in [v_k,v_{k+1})}$ et $n(v_k) = \sum_{i = 1}^n\ind_{x_i\geq v_k}$. 
+\end{theo}
+\begin{remark}
+Pour une \va T continue et un pas de discrétisation petit, on a 
+$$
+d(v_k) = d(t_k) = 1\text{ pour }k = 1,\ldots, n.
+$$
+\end{remark}
+\begin{proof}
+Nous allons considérer que les $h_k$ sont les paramètres du modèle, la vraisemblance des données s'écrit 
+$$
+\mathcal{L}(\Data;\theta) = \prod_{i=1}^n f(x_i; \theta)^{\delta_i}S(x_i;\theta)^{1-\delta_i},
+$$
+où $\Data = (x_i,\delta_i),\text{ }i = 1,\ldots, n$ et $\theta = h_0, h_1,\ldots$. Dans le cadre de notre modèle discret nous avons
+$$
+\mathcal{L}(\Data;\theta) = \prod_{i=1}^n \prod_{k=0}^\infty \left[p_k^{\ind_{x_i\in\left[v_k,v_{k+1}\right)}}\right]^{\delta_i}
+\left[S_k^{\ind_{x_i\in[v_k,v_{k+1})}}\right]^{1-\delta_i},
+$$
+où
+$$
+p_k = \Prob(T = v_k)\text{, et }S_k = \Prob(T > v_k).
+$$
+On a 
+$$
+p_k = h_k S_{k-1}\text{ et }S_k = \prod_{j = 1}^k(1-h_j).
+$$
+On peut ré-écrire la vraisemblance
+\begin{eqnarray*}
+\mathcal{L}(\Data;\theta) &=& \prod_{i=1}^n \prod_{k=0}^\infty h_k^{\ind_{x_i\in\left[v_k,v_{k+1}\right)}\delta_i}\left[\prod_{j=0}^{k-1}(1-h_j)\right]^{\ind_{x_i\in\left[v_k,v_{k+1}\right)}\delta_i}
+\left[\prod_{j=0}^{k}(1-h_j)\right]^{\ind_{x_i\in[v_k,v_{k+1})}(1-\delta_i)}\\
+&=& \prod_{i=1}^n \prod_{k=0}^\infty h_k^{\ind_{x_i\in\left[v_k,v_{k+1}\right)}\delta_i}(1-h_k)^{-\ind_{x_i\in\left[v_k,v_{k+1}\right)}\delta_i}
+\left[\prod_{j=0}^{k}(1-h_j)\right]^{\ind_{x_i\in[v_k,v_{k+1})}}\\
+&=& \prod_{k=0}^\infty h_k^{d(v_k)}(1-h_k)^{-d(v_k)}\left[\prod_{j=0}^{k}(1-h_j)\right]^{\sum_{i = 1}^n\ind_{x_i\in[v_k,v_{k+1})}}\\
+&=& \prod_{k=0}^\infty h_k^{d(v_k)}(1-h_k)^{n(v_k)-d(v_k)}.
+\end{eqnarray*}
+On recherche les $h_k$ qui maximisent la log vraisemblance, c'est à dire solution de
+$$
+\frac{\partial}{\partial h_k}l(\Data;\theta) = 0\Leftrightarrow \frac{d(v_k)}{h_k}-\frac{n(v_k)-d(v_k)}{1-h_k}=0.
+$$
+On en déduit que
+$$
+\widehat{h}_k = \frac{d(v_k)}{n(v_k)}.
+$$
+On vérifie également que 
+$$
+\frac{\partial^2 l}{\partial h_k\partial h_l} (\Data;\theta)=\begin{cases}
+0,&\text{ si }l\neq k\\
+-\frac{d(v_k)}{h_k^2}-\frac{n(v_k)-d(v_k)}{(1-h_k)^2},&\text{ sinon.}
+
+\end{cases}
+$$
+La matrice Hessienne est définie négative. On approche la fonction de survie par 
+$$
+S(t)\approx S_k,\text{pour }t\in [v_k,v_{k+1}),
+$$
+puis on estime par 
+$$
+\widehat{S}_n(t)=\prod_{k:v_k\leq t}\left[1-\frac{d(v_k)}{n(v_k)}\right].
+$$
+\end{proof}
+Pour proposer un estimateur de la fonction de hasard cumulée, on pourrait s'appuyer sur la relation entre la fonction de hasard cumulé et la fonction de survie
+$$
+\widehat{H}^{\text{KP}}_n(t) = -\ln\left[\widehat{S}^{\text{KP}}_n(t)\right] = -\sum_{k:v_k\leq t}\ln\left[1-\frac{d(v_k)}{n(v_k)}\right].
+$$
+L'estimateur de Nelson-Aalen (\citet{Nelson1972} et \citet{Aalen1978}) est un estimateur de la fonction de hasard cumulé qui se base sur l'estimation des taux de hasard instantanée.
+\begin{coro}
+$$
+\widehat{H}_n^{\text{NA}}(t) = \sum_{k:v_k\leq t}\frac{d(v_k)}{n(v_k)}.
+$$
+\end{coro}
+\begin{proof}
+Pour une \va $T$ discrète à valeur dans $\{v_0, v_1,\ldots\}$, on a 
+$$
+H(t) = \sum_{k:v_k\leq t} h_k.
+$$
+On remplace les $h_k$ par leur contre-partie empirique $\widehat{h}_k = d(v_k)/n(v_k)$ déterminé précédemment.
+\end{proof}
+\begin{remark}
+Pour $d(v_k)/n(v_k)$ suffisament petit, on a 
+$$
+\ln\left[1-\frac{d(v_k)}{n(v_k)}\right]\approx -d(v_k)/n(v_k),
+$$ 
+et 
+$$\widehat{H}_n^{\text{NA}}(t)\approx \widehat{H}_n^{\text{KP}}(t).$$
+\end{remark}
+
+\section{Variance et intervalle de confiance}
+\subsection{Rappel des propriétés de l'estimateur du maximum de vraisemblance}
+Soit $\Data = (x_1,\ldots, x_n)$ un échantillon \iid de réalisations de $X$ \va de densité $f(x;\theta)$. On note $l(\Data ; \theta)$ la log-vraisemblance du modèle et $\widehat{\theta}_n$ l'estimateur du maximum de vraisemblance.
+% \begin{definition}\label{def:score_info_fisher}
+% la fonction de score est définie par 
+% $$
+% s(X;\theta) = \frac{\partial}{\partial\theta}\ln f(X;\theta).
+% $$
+% L'information de Fisher de l'échantillon $(x_1,\ldots, x_n)$ est définie par
+% $$
+% I_n(\theta) = \V\left[\sum_{i=1}^n s(x_i;\theta)\right] = \sum_{i=1}^n \V\left[s(x_i;\theta)\right]
+% $$
+% \end{definition}
+% On note que 
+% $$
+% \E\left[s(X;\theta)\right] = 0
+% $$
+% et donc
+% $$
+% \V\left[s(x_i;\theta)\right] = \E\left[s(x_i;\theta)^2\right]
+% $$
+% L'estimateur du maximum de vraisemblance $\widehat{\theta}$ annule l'approximation de Monte Carlo de la moyenne du score. 
+% \begin{prop}
+% Sous certaine conditions de régularité, on a 
+% $$
+% I_n(\theta) = nI(\theta),  
+% $$
+% avec 
+% $$
+% I(\theta) = -\E\left(\frac{\partial^2}{\partial\theta^2}\ln f(X;\theta)\right).
+% $$
+% \end{prop}
+\begin{theo}
+sous certaines conditions de régularité, on a
+$$
+\widehat{\theta}_n\sim \NormalDist\left(\theta,I_n(\widehat{\theta}_n)^{-1}\right),\text{ pour } n\rightarrow\infty,
+$$
+où 
+$$
+I_n(\widehat{\theta}_n)^{-1} =  \left(-\frac{\partial^2}{\partial\theta^2}l(\Data;\widehat{\theta}_n)\right)^{-1},
+$$
+est la matrice d'information de Fisher.
+\end{theo}
+L'estimateur du maximum de vraisemblance est asymptotiquement normal ce qui permet de construire des intervalles de confiance et d'approcher sa variance par
+$$
+\V\left(\widehat{\theta}_n\right) = I_n(\widehat{\theta}_n)^{-1}.
+$$
+Une transformation régulière de l'estimateur du maximum de vraisemblance est aussi asymptotiquement normal.
+\begin{prop}
+Soit $\widehat{\theta_n}$ l'estimateur du maximum de vraisemblance de $\theta$ et $g$ une fonction dérivable alors 
+$$
+g(\widehat{\theta}_n)\sim\NormalDist\left(g(\theta), \,^tg'(\theta_n)I_n(\widehat{\theta}_n)^{-1}g'(\theta_n)\right).
+$$
+\end{prop}
+Ce résultat est connu sous le nom de méthode delta. Pour plus de détails sur ces résultats voir par exemple \cite[Chapitre 9]{Wasserman2013}.
+\subsection{Application à l'estimateur de Kaplan-Meier}
+On a $\theta= (h_0,h_1,\ldots)$ et
+\begin{equation}\label{eq:partial_derivative_log_like}
+\frac{\partial^2 }{\partial h_k\partial h_l} l(\Data;\theta)=\begin{cases}
+0,&\text{ si }l\neq k\\
+-\frac{d(v_k)}{h_k^2}-\frac{n(v_k)-d(v_k)}{(1-h_k)^2},&\text{ sinon.}
+\end{cases}
+\end{equation}
+La matrice d'information de Fisher est diagonale, ce qui implique une indépendance asymptotique des $\widehat{h}_{k}$. En substituant $h_k$ par $\widehat{h}_k = d(v_k)/n(v_k)$, on obtient 
+$$
+\V(\widehat{h}_k)\rightarrow \frac{d(v_k)[n(v_k)-d(v_k)]}{n(v_k)^3},\text{ pour }n\rightarrow \infty.
+$$
+L'estimateur de Kaplan-Meier vérifie
+$$
+\ln\widehat{S}_n(t)=\sum_{k:v_k\leq t}\ln\left[1-\widehat{h}_k\right].
+$$
+On applique la méthode delta avec la fonction $g:x\mapsto \ln(1-x)$. On a 
+$$
+g(\widehat{h}_k) - g(h_k)\sim \NormalDist(0,\V(\widehat{h}_k)g'(h_k)^2
+).
+$$
+On en déduit que 
+$$
+\V\left[\ln(1-\widehat{h}_k)\right]\rightarrow \frac{d(v_k)}{n(v_k)[n(v_k) - d(v_k)]},\text{ lorsque }n\rightarrow\infty.
+$$
+L'estimateur de Kaplan Meier vérifie
+$$
+\ln\widehat{S}_n(t)\sim\NormalDist[0, \V\ln\widehat{S}_n(t)]
+$$
+où
+$$
+\V\ln\widehat{S}_n(t)\rightarrow \sum_{k:v_k\leq t}\frac{d(v_k)}{n(v_k)[n(v_k) - d(v_k)]}\text{ pour }n\rightarrow\infty,
+$$
+car les $\widehat{h}_k$ sont asymptotiquement indépendants. On applique une deuxième fois la méthode delta sur $\ln\widehat{S}_n(t)$ avec $g:x\mapsto \e^x$ pour aboutir à 
+$$
+\widehat{S}_n(t) - S(t)\sim \NormalDist\left(0,\widehat{S}_n(t)^2\V\ln\widehat{S}_n(t)
+\right).
+$$
+% \section{Troncature à gauche et censure à droite}
+% Dans le cadre d'applications actuarielles, on rencontre souvent des données tronquées à gauche et censurée à droite. Les observations sont
+% \begin{itemize}
+% \item $\tau_i$ instant à partir duquel l'évènement $i$ peut être observé. 
+% \item $x_i = t_i\land c_i$ et $\delta_i = \ind_{t_i\leq c_i}$ si $x_i>\tau_i$ et $\emptyset$ sinon.
+% \end{itemize}
+% \begin{ex}
+% Dans le cadre d'un portefeuille d'assurance prévoyance pour lequel on souhaite établir une loi de maintien en incapacité, si l'entrée en incapacité se produit avant l'entrée en portefeuille alors nous avons pas accès à la durée de l'état d'incapacité.
+% \end{ex}
+% La prise en compte de la troncature à droite se fait en adaptant les décomptes d'observations avec 
+% $$
+% d(v_k) = \sum_{i = 1}^n\delta_i\ind_{x_i\in [v_k,v_{k+1})}\ind_{x_i> \tau_i}\text{, et }n(v_k) = \sum_{i = 1}^n\ind_{x_i\geq v_k}\ind_{x_i> \tau_i}.
+% $$
+% A noter que l'estimateur de Kaplan-Meier estime la fonction de survie de $T$ sachant que $T>\underset{i=1,\ldots,n}{\min}(\tau_i).$
+\section{Comparaison de la courbe de survie dans deux populations}
+L'objectif est de tester statistiquement l'égalité des taux de hasard instantanées au sein de deux populations. Sous $(H_0)$, on $h_k^1 =h_k^2$ pour tout $k$. On définit 
+$$
+d_j(v_k),\text{ et } n_j(v_k)\text{ pour }i=1,2. 
+$$
+les décomptes d'évènement au sein des groupes $1$ et $2$. Sous $H_0$, $d_j(v_k)$ suit une loi hypergéométrique $\text{H}-\GeometricDist[n(v_k), d(v_k), n_j(v_k)]$.
+\begin{definition}
+Une urne contient $N$ boules dont $K$ boules blanches et $N-K$ boules noires. On réalise $h$ tirage dans cette urne et on note $X$ le nombre de boules blanches tirées. La \va $X\sim \text{H}-\GeometricDist(N, K, h)$ admet une loi de probabilité donnée par
+$$
+\Prob(X = x)=\frac{\binom{K}{x}\binom{N-K}{h-x}}{\binom{N}{h}},\text{ pour }\max(0, h+K-N)\leq x\leq\min(K,h).
+$$ 
+Les moyenne et variance ont données par 
+$$
+\E(X) =h\frac{K}{N},\text{ et }\V(X) = h\frac{K}{N}\frac{N-K}{N}\frac{N-h}{N-1}.
+$$
+\end{definition}
+La statistique du log-rang compare la valeur observée $O_{j,k} = d_i(v_k)$ à la valeur attendue $E_{j,k} = n_i(v_k)\frac{d(v_k)}{n(v_k)}$ sous $H_0$ avec 
+\begin{equation}\label{eq:log_rank_stat}
+Z_j=\sum_{k: d(v_k)\geq 1}\frac{(O_{j,k} - E_{j,k})}{\sqrt{\sum_{k: d(v_k)\geq 1}V_{j,k}}}\sim \NormalDist(0,1),\text{ pour }j = 1,2,
+\end{equation}
+où
+$$
+V_{j,k}=n_j(v_k)\frac{d(v_k)}{n(v_k)}\frac{n(v_k)-d(v_k)}{n(v_k)}\frac{n(v_k)-n_j(v_k)}{n(v_k)-1}.
+$$
+La convergence \eqref{eq:log_rank_stat} est une application du théorème centrale limite, d'autant plus valide que $\#\{k: d(v_k)\geq 1\}$ est grand. Une meilleure approximation de la distribution asymptotique de la statistique de test a été obtenu par \citet{Peto1972}.

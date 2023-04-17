@@ -1,0 +1,171 @@
+\documentclass[11pt, answers]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsopn, color, tikz, mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{tipa}
+\usepackage{hyperref}
+
+
+% Style
+\setlength\parindent{0pt}
+\shadedsolutions
+
+% Define course info
+\def\semester{Semestre 2}
+\def\course{Modèle de duréee M1 DUAS}
+\def\name{P.-O. Goffard}
+%\def\quizdate{10/5, 10/6}
+\def\hwknum{}
+%\def\title{\MakeUppercase{Homework \hwknum -- quiz \quizdate }}
+\def\title{\MakeUppercase{TD 3: Modèle à hasard proportionel.}}
+% Distributions.
+\newcommand*{\UnifDist}{\mathsf{Unif}}
+\newcommand*{\ExpDist}{\mathsf{Exp}}
+\newcommand*{\DepExpDist}{\mathsf{DepExp}}
+\newcommand*{\GammaDist}{\mathsf{Gamma}}
+\newcommand*{\LognormalDist}{\mathsf{LogNorm}}
+\newcommand*{\WeibullDist}{\mathsf{Weib}}
+\newcommand*{\ParetoDist}{\mathsf{Par}}
+\newcommand*{\NormalDist}{\mathsf{Normal}}
+
+\newcommand*{\GeometricDist}{\mathsf{Geom}}
+\newcommand*{\NegBinomialDist}{\mathsf{NegBin}}
+\newcommand*{\BinomialDist}{\mathsf{Bin}}
+\newcommand*{\PoissonDist}{\mathsf{Poisson}}
+
+% Sets of numbers.
+\newcommand*{\RL}{\mathbb{R}}
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\NZ}{\mathbb{N}_0}
+% \newcommand*{\NL}{\mathbb{N}_+}
+
+\newcommand*{\cond}{\mid}
+\newcommand*{\given}{\,;\,}
+
+%Probability symbols
+\newcommand*{\Prob}{\mathbb{P}}
+\newcommand*{\Q}{\mathbb{Q}}
+\newcommand*{\E}{\mathbb{E}}
+\newcommand*{\F}{\mathcal{F}}
+% Regarding spacing and abbreviations.
+\usepackage{xspace}
+
+% Acronyms
+% \@\xspace doesn't add space if next char is punctuation
+% However, these will give 2 .'s if used at end of sentence.
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ps}{p.s.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\va}{v.a.\@\xspace}
+\newcommand*{\iid}{i.i.d.\@\xspace}
+\newcommand*{\ssi}{s.s.i.\@\xspace}
+\newcommand*{\cf}{c.f.\@\xspace}
+\newcommand*{\pdf}{p.d.f.\@\xspace}
+\newcommand*{\pmf}{p.m.f.\@\xspace}
+\newcommand*{\cdf}{c.d.f.\@\xspace}
+\newcommand*{\SMC}{\textbf{SMC}\@\xspace}
+\newcommand*{\MCMC}{\textbf{MCMC}\@\xspace}
+\newcommand*{\VF}{\textbf{VF}\@\xspace}
+
+
+\newcommand*{\iidSim}{\overset{\mathrm{i.i.d.}}{\sim}}
+\newcommand*{\bt}{\bm{\theta}}
+\newcommand*{\bTheta}{\bm{\Theta}}
+\newcommand*{\bbeta}{\bm{\beta}}
+\newcommand*{\bx}{\mathbf{x}}
+\newcommand*{\bs}{\bm{s}}
+\newcommand*{\bu}{\bm{u}}
+\newcommand*{\bn}{\bm{n}}
+
+% Roman versions of things.
+\newcommand*{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand*{\e}{\mathrm{e}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand*{\norm}[1]{\lVert{} #1\rVert}
+
+% \DeclarePairedDelimiterXPP{\ind}[1]{\ind_}{\{}{\}}{}{#1}
+\newcommand*{\ind}{\mathbb{I}}
+\def\euro{\mbox{\raisebox{.25ex}{{\it =}}\hspace{-.5em}{\sf C}}}
+  \everymath{\displaystyle}
+% \newcommand{\limsup}{\overline{\lim}\,}            % blackboard P
+% \newcommand{\liminf}{\underline{\lim}\,}            % blackboard P
+
+\begin{document}
+
+% Heading
+{\center \textsc{\Large\title}\\
+	\vspace*{1em}
+	\course -- \semester\\
+	\name\\
+	\vspace*{2em}
+	\hrule
+\vspace*{2em}}
+
+\begin{questions}
+
+\question On considère un modèle de hasard proportionnel pour lequel le risque de base est donnée par une loi de Weibull. La fonction de hasard de $T$ conditionellement au vecteur de covariables $Z$ est donnée par 
+$$
+h(t):= h(t|z;\alpha, \beta)= \alpha t^{\alpha-1}\e^{z\beta}.
+$$
+Soit un échantillon de données censurées à droite 
+$$
+(x_i,\delta_i) = (t_i\land c_i,\ind_{t_i\leq c_i}),\text{ }i=1,\ldots, n.
+$$
+\begin{parts}
+\part Ecrire la log vraisemblance du modèle.
+\begin{solution}
+La vraisemblance s'écrit
+$$
+\mathcal{L}(\mathcal{D};\theta) = \prod_{i=1}^n(\alpha x_i^{\alpha-1}\e^{\,^tz_i\beta})^{\delta_i}\exp(\e^{\,^tz_i\beta}x_i^\alpha).
+$$
+La log vraisemblance est donnée par 
+$$
+l(\mathcal{D};\theta) = \ln(\alpha)\sum_{i=1}^n\delta_i +(\alpha-1)\sum_{i=1}^n\delta_i\ln(x_i) + \sum_{i=1}^n\delta_i \,^tz_i\beta-\sum_{i=1}^n\e^{\,^tz_i\beta}x_i^\alpha.
+$$
+\end{solution}
+\part Ecrire l'expression des dérivées premières de la log vraisemblance.
+\begin{solution}
+Les dérivées premières sont données par  
+$$
+\frac{\partial}{\partial \alpha}l(\mathcal{D};\theta) = \frac{1}{\alpha}\sum_{i=1}^n\delta_i +\sum_{i=1}^n\delta_i\ln(x_i) - \sum_{i=1}^n\e^{\,^tz_i\beta}\ln(x_i)x_i^\alpha.
+$$
+et 
+$$
+\frac{\partial}{\partial \beta}l(\mathcal{D};\theta) =  \sum_{i=1}^n\delta_i z_i-\sum_{i=1}^nz_i \e^{\,^tz_i\beta}x_i^\alpha.
+$$
+\end{solution}
+% \part Ecrire l'expression des dérivées secondes de la log vraisemblance. 
+% \begin{solution}
+% Les dérivées premières sont données par  
+% $$
+% \frac{\partial^2}{\partial \alpha^2}l(\mathcal{D};\theta) = -\frac{1}{\alpha^2}\sum_{i=1}^n\delta_i - \sum_{i=1}^n\e^{\,^tz_i\beta}\ln(x_i)^2x_i^\alpha,
+% $$
+% $$
+% \frac{\partial^2}{\partial \beta^2}l(\mathcal{D};\theta) =  -\sum_{i=1}^n\,^tz_i z_i \e^{\,^tz_i\beta}x_i^\alpha.
+% $$
+% et 
+% $$
+% \frac{\partial^2}{\partial \alpha\partial\beta}l(\mathcal{D};\theta) = - \sum_{i=1}^nz_i\e^{\,^tz_i\beta}\ln(x_i)x_i^\alpha.
+% $$
+% \end{solution}
+\part Ecrire un code R qui simule des données depuis un modèle à hasard proportionel de Weibull et ajuste le modèle aux données. 
+\begin{enumerate}
+	\item Ecrire une fonction qui prend en entrée $\alpha$, $\beta$ et la matrice des covariables.
+	\item Produire un dataframe contenant $1,000$ observations 
+	\begin{itemize}
+		\item pour chaque individu, on dispose de deux covariables $Z_1\sim \BinomialDist(1, p = 1/2)$ et $Z_2\sim\UnifDist([0,1])$.
+		\item Les observations non censurées $t_i$ sont distribués suivant un modèle de Weibull à hasard proportionel tel que $\alpha = 1/2$ et $\beta = (-1/2\text{ }1/2)$
+		\item Les observations censurées à droite $x_i$ proviennent d'une variable de censure non informative $c_i$ suivant le même modèle que les observations c'est à dire un modèle de Weibull à hasard proportionel tel que $\alpha = 1/2$ et $\beta = (-1/2\text{ }1/2)$.
+	\end{itemize}
+	\item Ecrire une fonction pour ajuster le modèle aux données et appliquer cette fonction à votre dataframe.
+	\item Vous pouvez comparer le résultat avec celui rendu par la fonction \texttt{survreg}\footnote{Voir \url{http://dwoll.de/rexrepos/posts/survivalParametric.html} pour un tuto} de la librairie \text{survival}.
+\end{enumerate}
+\end{parts}
+\end{questions}
+% \bibliography{../lecture_notes/mdd.bib}
+% \bibliographystyle{plain}
+\end{document}
