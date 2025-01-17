@@ -22,6 +22,6 @@ Séance             | Enoncé
 Année            | Enoncé
 -----------------   | -------------
 Practice Exam | [Practice](TD/Practice_Exam.pdf)
-2022-2023 | [Mai](Examen/2022-2023/Exam_MDD_Mai_2023.pdf)
-2023-2024 | [Janvier](Examen/2023-2024/Exam_MDD_Jan_2024.pdf)
-2024-2025 | [Janvier](Examen/2024-2025/Exam_MDD_Jan_2025.pdf)
+2022-2023 | [Mai](exam/2022-2023/Exam_MDD_Mai_2023.pdf)
+2023-2024 | [Janvier](exam/2023-2024/Exam_MDD_Jan_2024.pdf)
+2024-2025 | [Janvier](exam/2024-2025/Exam_MDD_Jan_2025.pdf)
