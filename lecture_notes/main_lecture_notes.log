@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.23)  12 APR 2023 09:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.23)  28 DEC 2024 11:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1560,10 +1560,10 @@ File: t1jkp.fd 2007/01/24 Fontinst v1.928 font definitions for T1/jkp.
 )
 (./main_lecture_notes.aux
 
-LaTeX Warning: Label `fig:lexis' multiply defined.
+LaTeX Warning: Label `def:censure_tronquature' multiply defined.
 
 
-LaTeX Warning: Label `fig:lexis@cref' multiply defined.
+LaTeX Warning: Label `def:censure_tronquature@cref' multiply defined.
 
 )
 \openout1 = `main_lecture_notes.aux'.
@@ -1784,7 +1784,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...e {4.3}Test d'hypothÃ¨se}{24}{section.4.3}
+l.31 ...de proportionalitÃ©}{22}{subsection.4.3.3}
                                                   % [1
 
 ])
@@ -1804,58 +1804,20 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (7.34097pt too wide) in paragraph at lines 16--17
-[]\T1/jkp/m/n/10 (-20) Comment cer-taines cir-con-stances de l'évènement ou car
--ac-téris-tiques in-di-vivuelles impactent-
- []
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [3
 
-]
-Overfull \hbox (44.38634pt too wide) in paragraph at lines 67--78
- [][] 
+] [4]
+Overfull \hbox (19.69542pt too wide) in paragraph at lines 240--241
+ [] 
  []
 
-[4]
-<../figures/INC_visu.pdf, id=271, 469.755pt x 324.21124pt>
-File: ../figures/INC_visu.pdf Graphic file (type pdf)
-<use ../figures/INC_visu.pdf>
-Package pdftex.def Info: ../figures/INC_visu.pdf  used on input line 96.
-(pdftex.def)             Requested size: 291.78174pt x 201.37991pt.
- [5 <../figures/INC_visu.pdf>] [6]
-<../figures/INC_hist_boxplot.pdf, id=295, 469.755pt x 324.21124pt>
-File: ../figures/INC_hist_boxplot.pdf Graphic file (type pdf)
-<use ../figures/INC_hist_boxplot.pdf>
-Package pdftex.def Info: ../figures/INC_hist_boxplot.pdf  used on input line 19
-3.
-(pdftex.def)             Requested size: 333.46758pt x 230.14706pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[7]
-<../figures/INC_S_H_nonp.pdf, id=304, 469.755pt x 324.21124pt>
-File: ../figures/INC_S_H_nonp.pdf Graphic file (type pdf)
-<use ../figures/INC_S_H_nonp.pdf>
-Package pdftex.def Info: ../figures/INC_S_H_nonp.pdf  used on input line 208.
-(pdftex.def)             Requested size: 333.46758pt x 230.14706pt.
- [8 <../figures/INC_hist_boxplot.pdf> <../figures/INC_S_H_nonp.pdf>]
-<../figures/INC_h_nonp.pdf, id=324, 469.755pt x 324.21124pt>
-File: ../figures/INC_h_nonp.pdf Graphic file (type pdf)
-<use ../figures/INC_h_nonp.pdf>
-Package pdftex.def Info: ../figures/INC_h_nonp.pdf  used on input line 219.
-(pdftex.def)             Requested size: 333.46758pt x 230.14706pt.
-<../figures/INC_S_H_p.pdf, id=326, 469.755pt x 324.21124pt>
-File: ../figures/INC_S_H_p.pdf Graphic file (type pdf)
-<use ../figures/INC_S_H_p.pdf>
-Package pdftex.def Info: ../figures/INC_S_H_p.pdf  used on input line 232.
-(pdftex.def)             Requested size: 333.46758pt x 230.14706pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+[5] [6]) (./includes/chap_II_parametric.tex [7]
+Chapter 2.
 LaTeX Font Info:    Trying to load font information for T1+jkptt on input line 
-238.
+14.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/kpfonts/t1jkptt.fd
 File: t1jkptt.fd 2007/01/26 Fontinst v1.928 font definitions for T1/jkptt.
 )
@@ -1863,54 +1825,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `jkptt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<../figures/INC_S_H_cohorte.pdf, id=329, 469.755pt x 324.21124pt>
-File: ../figures/INC_S_H_cohorte.pdf Graphic file (type pdf)
-<use ../figures/INC_S_H_cohorte.pdf>
-Package pdftex.def Info: ../figures/INC_S_H_cohorte.pdf  used on input line 256
-.
-(pdftex.def)             Requested size: 333.46758pt x 230.14706pt.
- [9 <../figures/INC_h_nonp.pdf>]
+ [8
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) (./includes/chap_II_parametric.tex [10 <../figures/INC_S_H_p.pdf>] [11 <../fi
-gures/INC_S_H_cohorte.pdf>]
-Chapter 2.
-[12
-
-]
+] [9]
 LaTeX Font Info:    Trying to load font information for OT1+jkpss on input line
- 67.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/kpfonts/ot1jkpss.fd
+ 81.
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/kpfonts/ot1jkpss.fd
 File: ot1jkpss.fd 2007/07/16 Fontinst v1.928 font definitions for OT1/jkpss.
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `jkpss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-[13]
-<../figures/d_S_h_H_parametric.pdf, id=381, 526.96875pt x 325.215pt>
+<../figures/d_S_h_H_parametric.pdf, id=316, 526.96875pt x 325.215pt>
 File: ../figures/d_S_h_H_parametric.pdf Graphic file (type pdf)
 <use ../figures/d_S_h_H_parametric.pdf>
 Package pdftex.def Info: ../figures/d_S_h_H_parametric.pdf  used on input line 
-110.
+124.
 (pdftex.def)             Requested size: 416.83289pt x 257.25943pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[14] [15 <../figures/d_S_h_H_parametric.pdf>])
-(./includes/chap_III_nonparametric.tex [16]
+ [10]
+[11 <../figures/d_S_h_H_parametric.pdf>])
+(./includes/chap_III_nonparametric.tex [12]
 Chapter 3.
-[17
+[13
 
-] [18] [19] [20]) (./includes/chap_IV_PH_models.tex [21]
+] [14] [15] [16] [17]) (./includes/chap_IV_PH_models.tex [18]
 Chapter 4.
-[22
+[19
 
-] [23] [24] [25]
-Overfull \hbox (21.77185pt too wide) detected at line 151
+] [20] [21] [22]
+Overfull \hbox (21.77185pt too wide) detected at line 156
 \OML/jkp/m/it/10 r[] \OT1/jkp/m/n/10 = \OML/jkp/m/it/10 Z\OT1/jkp/m/n/10 (\OML/
 jkp/m/it/10 v[]\OT1/jkp/m/n/10 ) \OMS/jkp/m/n/10 ^^@ \U/jkpsyb/m/n/10 E[]\OT1/j
 kp/m/n/10 (\OML/jkp/m/it/10 Z\OMS/jkp/m/n/10 j\OML/jkp/m/it/10 T \OT1/jkp/m/n/1
@@ -1926,70 +1871,86 @@ p/m/n/10 (\OML/jkp/m/it/10 Z\OMS/jkp/m/n/10 j\OML/jkp/m/it/10 T \OT1/jkp/m/n/10
 jkp/m/it/10 M\OT1/jkp/m/n/10 ([]\OML/jkp/m/it/10 ; v[]\OT1/jkp/m/n/10 )]
  []
 
-) (./includes/chap_V_mortality_table.tex [26]
+) (./includes/chap_V_mortality_table.tex [23]
 Chapter 5.
-[27
+[24
 
 ]
-Overfull \hbox (42.75627pt too wide) in paragraph at lines 25--55
+Overfull \hbox (42.75627pt too wide) in paragraph at lines 26--56
  [][] 
  []
 
-[28] [29] [30]
-<../figures/Helgman_pollard_model.png, id=560, 606.265pt x 537.00626pt>
+[25] [26] [27]
+<../figures/Helgman_pollard_model.png, id=499, 606.265pt x 537.00626pt>
 File: ../figures/Helgman_pollard_model.png Graphic file (type png)
 <use ../figures/Helgman_pollard_model.png>
 Package pdftex.def Info: ../figures/Helgman_pollard_model.png  used on input li
-ne 186.
+ne 185.
 (pdftex.def)             Requested size: 312.62466pt x 276.90956pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[31] [32 <../figures/Helgman_pollard_model.png>] [33] [34]
-Underfull \hbox (badness 10000) in paragraph at lines 328--328
+[28] [29 <../figures/Helgman_pollard_model.png>]
+Underfull \hbox (badness 2894) in paragraph at lines 253--253
+[][][]\T1/jkp/m/n/8 (+20) Voici un pe-tit for-mu-laire de déri-va-tion ma-trici
+elle [][]$\T1/jkptt/m/n/8 https : / / www . di . ens . fr / ~fbach / courses / 
+fall2009 /
+ []
+
+[30] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 308--308
 [][][][][]$\T1/jkptt/m/n/8 https : / / www . soa . org / globalassets / assets 
 / files / resources / essays-[]monographs / 2005-[]living-[]to-[]100 /
  []
 
-[35] [36] [37] [38]
-<../figures/Lexis_expo_computation.png, id=650, 559.08875pt x 496.85625pt>
+[32]
+
+LaTeX Warning: Reference `fig:lexis_1' on page 1 undefined on input line 369.
+
+[33]
+<../figures/Lexis_expo_computation.png, id=579, 559.08875pt x 496.85625pt>
 File: ../figures/Lexis_expo_computation.png Graphic file (type png)
 <use ../figures/Lexis_expo_computation.png>
 Package pdftex.def Info: ../figures/Lexis_expo_computation.png  used on input l
-ine 521.
+ine 524.
 (pdftex.def)             Requested size: 312.62466pt x 277.83578pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[39] [40 <../figures/Lexis_expo_computation.png>] [41]
-<../figures/death_rate_cohort_HMD.png, id=685, 601.24625pt x 558.085pt>
+ [34] [35 <../figures/Lexis_expo_computation.png>] [36]
+<../figures/death_rate_cohort_HMD.png, id=619, 601.24625pt x 558.085pt>
 File: ../figures/death_rate_cohort_HMD.png Graphic file (type png)
 <use ../figures/death_rate_cohort_HMD.png>
 Package pdftex.def Info: ../figures/death_rate_cohort_HMD.png  used on input li
-ne 634.
+ne 638.
 (pdftex.def)             Requested size: 312.62466pt x 290.18884pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[42] [43 <../figures/death_rate_cohort_HMD.png>] [44] [45])
-(./main_lecture_notes.bbl [46] [47
+[37] [38 <../figures/death_rate_cohort_HMD.png>] [39] [40] [41]
+Overfull \hbox (9.9761pt too wide) in paragraph at lines 893--893
+[]\T1/jkp/b/n/14.4 (-20) Annexe: Whittaker-Henderson vu comme un lis-sage bayés
+ien 
+ []
 
-] [48]) [49] (./main_lecture_notes.aux)
+[42] [43]) (./main_lecture_notes.bbl [44] [45
+
+] [46]) [47]
+(./main_lecture_notes.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main_lecture_notes.out' has not changed.
-(rerunfilecheck)             Checksum: A508A8DDAC9B742F027ADA3753BDD2F3;10147.
+(rerunfilecheck)             Checksum: D1C47EC34B5F082CF1BD9606E4A64A04;10188.
  ) 
 Here is how much of TeX's memory you used:
- 52091 strings out of 478268
- 1186573 string characters out of 5846346
- 1599039 words of memory out of 5000000
- 68564 multiletter control sequences out of 15000+600000
- 676548 words of font info for 617 fonts, out of 8000000 for 9000
+ 51984 strings out of 478268
+ 1183434 string characters out of 5846346
+ 1601039 words of memory out of 5000000
+ 68448 multiletter control sequences out of 15000+600000
+ 684355 words of font info for 638 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,89p,7150b,1189s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.en
@@ -2008,10 +1969,10 @@ fonts/jkpsy.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/
 jkpsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsy
 c.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.
 pfb>
-Output written on main_lecture_notes.pdf (50 pages, 1568414 bytes).
+Output written on main_lecture_notes.pdf (48 pages, 445342 bytes).
 PDF statistics:
- 874 PDF objects out of 1000 (max. 8388607)
- 766 compressed objects within 8 object streams
- 228 named destinations out of 1000 (max. 500000)
- 140719 words of extra memory for PDF output out of 154059 (max. 10000000)
+ 825 PDF objects out of 1000 (max. 8388607)
+ 731 compressed objects within 8 object streams
+ 217 named destinations out of 1000 (max. 500000)
+ 138641 words of extra memory for PDF output out of 154059 (max. 10000000)
 

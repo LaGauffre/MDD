@@ -1,5 +1,5 @@
 % !TEX root = ../main_lecture_notes.tex
-\chapter{Approche non paramétrique}\label{sec:nonparametric}
+\chapter{Approche non paramétrique}\label{chap:nonparametric}
 Soit $T$ une variable aléatoire positive et un échantillon $t_1,\ldots, t_n$ de réalisations \iid de $T$. L'estimateur naturelle de la fonction de survie de $T$ est donnée par 
 \begin{equation}\label{eq:fonction_survie_empirique}
 \widehat{S}_n(t) =\frac{1}{n}\sum_{k=1}^n\ind_{t_k >t}.
@@ -8,16 +8,12 @@ La loi des grands nombre indique qu'il s'agit d'un estimateur convergent de la f
 $$
 \Data = (x_k, \delta_k) = \left(t_k\land c_k, \ind_{t_k<c_k}\right),
 $$
-où $(c_k)_{k\geq1}$ est une suite de réels positives. Nous savons si l'observation est censurée via $\delta_k$, auquel cas la valeur censurée $c_k$ remplace la réalisation $t_k$. L'utilisation des $x_k$ brutalement dans l'estimateur \eqref{eq:fonction_survie_empirique} biaise l'estimation. Un estimateur de la fonction de survie qui tient compte de la censure est le suivant 
-\begin{equation}\label{eq:fonction_survie_empirique_censure}
-\widehat{S}_n(t) =\frac{\sum_{k=1}^n\ind_{x_k >t}}{\sum_{k=1}^n\ind_{x_k >t} + \sum_{k=1}^n\ind_{x_k \leq t}\delta_k},
-\end{equation}
-Une alternative qui exploite mieux l'information disponible est l'estimateur de Kaplan-Meier.
+où $(c_k)_{k\geq1}$ est une suite de réels positives. Nous savons si l'observation est censurée via $\delta_k$, auquel cas la valeur censurée $c_k$ remplace la réalisation $t_k$. L'utilisation des $x_k$ brutalement dans l'estimateur \eqref{eq:fonction_survie_empirique} biaise l'estimation. Une alternative qui exploite mieux l'information disponible est l'estimateur de Kaplan-Meier.
 \section{Estimateur de Kaplan-Meier et Nelson-Aalen}
 
 Ce problème de valeurs observées censurées a été contournée par \citet{Kaplan1958} qui ont proposé un estimateur "produit-limite". Supposons que $T$ soit discrète à valeur dans $\{v_0,v_1,\ldots,\}$ tel que $0=v_0<v_1<\ldots$. Notons 
 $$
-h_0 =\Prob(T=v_0)\text{, et } h_k=\Prob(T=v_k|T> v_{k})\text{ pour } k\geq 1.
+h_0 =\Prob(T=v_0)\text{, et } h_k=\Prob(T=v_k|T> v_{k-1})\text{ pour } k\geq 1.
 $$
 \begin{remark}
 Si $T$ est un \va continu alors on peu discrétiser la loi de $T$ en approchant $T$ par $h\lfloor T/h\rfloor$. Comme $h\lfloor T/h\rfloor\rightarrow T$ lorsque $h\rightarrow 0$ et l'approximation est d'autant meilleur que le pas de discrétisation $h$ est petit. 
@@ -51,7 +47,7 @@ p_k = \Prob(T = v_k)\text{, et }S_k = \Prob(T > v_k).
 $$
 On a 
 $$
-p_k = h_k S_{k-1}\text{ et }S_k = \prod_{j = 1}^k(1-h_j).
+p_k = h_k S_{k-1}\text{ et }S_k = \prod_{j = 0}^k(1-h_j).
 $$
 On peut ré-écrire la vraisemblance
 \begin{eqnarray*}
@@ -59,8 +55,19 @@ On peut ré-écrire la vraisemblance
 \left[\prod_{j=0}^{k}(1-h_j)\right]^{\ind_{x_i\in[v_k,v_{k+1})}(1-\delta_i)}\\
 &=& \prod_{i=1}^n \prod_{k=0}^\infty h_k^{\ind_{x_i\in\left[v_k,v_{k+1}\right)}\delta_i}(1-h_k)^{-\ind_{x_i\in\left[v_k,v_{k+1}\right)}\delta_i}
 \left[\prod_{j=0}^{k}(1-h_j)\right]^{\ind_{x_i\in[v_k,v_{k+1})}}\\
-&=& \prod_{k=0}^\infty h_k^{d(v_k)}(1-h_k)^{-d(v_k)}\left[\prod_{j=0}^{k}(1-h_j)\right]^{\sum_{i = 1}^n\ind_{x_i\in[v_k,v_{k+1})}}\\
-&=& \prod_{k=0}^\infty h_k^{d(v_k)}(1-h_k)^{n(v_k)-d(v_k)}.
+&=& \prod_{k=0}^\infty h_k^{d(v_k)}(1-h_k)^{-d(v_k)}\left[\prod_{j=0}^{k}(1-h_j)\right]^{\sum_{i = 1}^n\ind_{x_i\in[v_k,v_{k+1})}}
+\end{eqnarray*}
+On passe au log pour obtenir 
+\begin{eqnarray*}
+l(\Data;\theta) &=& \log\mathcal{L}(\Data;\theta)\\
+&=& \sum_{k=0}^\infty \left\{d(v_k)\log(h_k)-d(v_k)\log(1-h_k) + \left[\sum_{j=0}^{k}\sum_{i = 1}^n\ind_{x_i\in[v_k,v_{k+1})}\log(1-h_j)\right]\right\}\\
+&=&\sum_{k=0}^\infty \left\{d(v_k)\log(h_k)-d(v_k)\log(1-h_k)\right\} + \sum_{k=0}^\infty\left[\sum_{j=0}^{k}\sum_{i = 1}^n\ind_{x_i\in[v_k,v_{k+1})}\log(1-h_j)\right]\\
+&=&\sum_{k=0}^\infty \left\{d(v_k)\log(h_k)-d(v_k)\log(1-h_k)\right\} + \sum_{j=0}^\infty\left[\sum_{k=j}^{\infty}\sum_{i = 1}^n\ind_{x_i\in[v_k,v_{k+1})}\log(1-h_j)\right]\\
+&=&\sum_{k=0}^\infty \left\{d(v_k)\log(h_k)-d(v_k)\log(1-h_k)\right\} + \sum_{j=0}^\infty\log(1-h_j)\sum_{i = 1}^n\sum_{k=j}^{\infty}\ind_{x_i\in[v_k,v_{k+1})}\\
+&=&\sum_{k=0}^\infty \left\{d(v_k)\log(h_k)-d(v_k)\log(1-h_k)\right\} + \sum_{j=0}^\infty\log(1-h_j)\sum_{i = 1}^n\sum_{k=j}^{\infty}\ind_{x_i\in[v_k,v_{k+1})}\\
+&=&\sum_{k=0}^\infty \left\{d(v_k)\log(h_k)-d(v_k)\log(1-h_k)\right\} + \sum_{j=0}^\infty\log(1-h_j)\sum_{i = 1}^n\ind_{x_i\geq v_j}\\
+&=&\sum_{k=0}^\infty \left\{d(v_k)\log(h_k)-d(v_k)\log(1-h_k)\right\} + \sum_{j=0}^\infty\log(1-h_j)n(v_j)\\
+&=&\sum_{k=0}^\infty d(v_k)\log(h_k)-[n(v_k) - d(v_k)]\log(1-h_k).\\
 \end{eqnarray*}
 On recherche les $h_k$ qui maximisent la log vraisemblance, c'est à dire solution de
 $$
@@ -115,7 +122,7 @@ $$\widehat{H}_n^{\text{NA}}(t)\approx \widehat{H}_n^{\text{KP}}(t).$$
 
 \section{Variance et intervalle de confiance}
 \subsection{Rappel des propriétés de l'estimateur du maximum de vraisemblance}
-Soit $\Data = (x_1,\ldots, x_n)$ un échantillon \iid de réalisations de $X$ \va de densité $f(x;\theta)$. On note $l(\Data ; \theta)$ la log-vraisemblance du modèle et $\widehat{\theta}_n$ l'estimateur du maximum de vraisemblance.
+Soit $\Data = (x_1,\ldots, x_n)$ un échantillon \iid de réalisations de $X$ \va de densité $f(x;\theta)$. On note $l(\Data ; \theta)$ la log-vraisemblance du modèle et $\widehat{\theta} =(\widehat{\theta}_1,\ldots, \widehat{\theta}_k) $ l'estimateur du maximum de vraisemblance.
 % \begin{definition}\label{def:score_info_fisher}
 % la fonction de score est définie par 
 % $$
@@ -146,25 +153,29 @@ Soit $\Data = (x_1,\ldots, x_n)$ un échantillon \iid de réalisations de $X$ \v
 % $$
 % \end{prop}
 \begin{theo}
-sous certaines conditions de régularité, on a
+Sous certaines conditions de régularité, on a
 $$
-\widehat{\theta}_n\sim \NormalDist\left(\theta,I_n(\widehat{\theta}_n)^{-1}\right),\text{ pour } n\rightarrow\infty,
+\widehat{\theta}\sim \NormalDist\left(\theta,I_n(\widehat{\theta})^{-1}\right),\text{ pour } n\rightarrow\infty,
 $$
 où 
 $$
-I_n(\widehat{\theta}_n)^{-1} =  \left(-\frac{\partial^2}{\partial\theta^2}l(\Data;\widehat{\theta}_n)\right)^{-1},
+I_n(\widehat{\theta})^{-1} =  \left(-\frac{\partial^2}{\partial\theta^2}l(\Data;\widehat{\theta})\right)^{-1},
 $$
-est la matrice d'information de Fisher.
+est la matrice d'information de Fisher. De plus, 
+$$
+\widehat{\theta}_j\sim\NormalDist(\theta_j, I_n(\widehat{\theta})^{-1}(j,j)),
+$$
+où $I_n(\widehat{\theta})^{-1}(j,j)$ est le $j^{\text{ème}}$ terme diagonale de la matrice $I_n(\widehat{\theta})^{-1}$. A noter que le terme $I_n(\widehat{\theta})^{-1}(i,j)$ correspond à la covariance entre $\widehat{\theta}_i$ et $\widehat{\theta}_j$.
 \end{theo}
-L'estimateur du maximum de vraisemblance est asymptotiquement normal ce qui permet de construire des intervalles de confiance et d'approcher sa variance par
+L'estimateur du maximum de vraisemblance est asymptotiquement normal ce qui permet de construire des intervalles de confiance et d'approcher sa matrice de variance-covariance par
 $$
-\V\left(\widehat{\theta}_n\right) = I_n(\widehat{\theta}_n)^{-1}.
+\V\left(\widehat{\theta}\right) = I_n(\widehat{\theta})^{-1}.
 $$
 Une transformation régulière de l'estimateur du maximum de vraisemblance est aussi asymptotiquement normal.
 \begin{prop}
-Soit $\widehat{\theta_n}$ l'estimateur du maximum de vraisemblance de $\theta$ et $g$ une fonction dérivable alors 
+Soit $\widehat{\theta}$ l'estimateur du maximum de vraisemblance de $\theta$ et $g$ une fonction dérivable, on note $^t\nabla g(\theta) = \left(\frac{\partial g}{\partial \theta_1}(\theta),\ldots, \frac{\partial g}{\partial \theta_k}(\theta)\right)$   alors 
 $$
-g(\widehat{\theta}_n)\sim\NormalDist\left(g(\theta), \,^tg'(\theta_n)I_n(\widehat{\theta}_n)^{-1}g'(\theta_n)\right).
+g(\widehat{\theta})\sim\NormalDist\left(g(\theta), \,^t\nabla g\left(\widehat{\theta}\right)I_n(\widehat{\theta})^{-1}\nabla g\left(\widehat{\theta}\right)\right).
 $$
 \end{prop}
 Ce résultat est connu sous le nom de méthode delta. Pour plus de détails sur ces résultats voir par exemple \cite[Chapitre 9]{Wasserman2013}.
@@ -186,7 +197,7 @@ $$
 $$
 On applique la méthode delta avec la fonction $g:x\mapsto \ln(1-x)$. On a 
 $$
-g(\widehat{h}_k) - g(h_k)\sim \NormalDist(0,\V(\widehat{h}_k)g'(h_k)^2
+g(\widehat{h}_k) - g(h_k)\sim \NormalDist(0,\V(\widehat{h}_k)g'(\widehat{h}_k)^2
 ).
 $$
 On en déduit que 
@@ -195,7 +206,7 @@ $$
 $$
 L'estimateur de Kaplan Meier vérifie
 $$
-\ln\widehat{S}_n(t)\sim\NormalDist[0, \V\ln\widehat{S}_n(t)]
+\ln\widehat{S}_n(t)\sim\NormalDist[\ln S(t), \V\ln\widehat{S}_n(t)]
 $$
 où
 $$
@@ -206,6 +217,7 @@ $$
 \widehat{S}_n(t) - S(t)\sim \NormalDist\left(0,\widehat{S}_n(t)^2\V\ln\widehat{S}_n(t)
 \right).
 $$
+L'estimateur de la variance $\widehat{S}_n(t)^2\V\ln\widehat{S}_n(t)$ de l'estimateur de Kaplan-Meier est parfois appelé estimateur de Greenwood.
 % \section{Troncature à gauche et censure à droite}
 % Dans le cadre d'applications actuarielles, on rencontre souvent des données tronquées à gauche et censurée à droite. Les observations sont
 % \begin{itemize}
@@ -223,25 +235,29 @@ $$
 \section{Comparaison de la courbe de survie dans deux populations}
 L'objectif est de tester statistiquement l'égalité des taux de hasard instantanées au sein de deux populations. Sous $(H_0)$, on $h_k^1 =h_k^2$ pour tout $k$. On définit 
 $$
-d_j(v_k),\text{ et } n_j(v_k)\text{ pour }i=1,2. 
+d_j(v_k),\text{ et } n_j(v_k)\text{ pour }j=1,2. 
 $$
-les décomptes d'évènement au sein des groupes $1$ et $2$. Sous $H_0$, $d_j(v_k)$ suit une loi hypergéométrique $\text{H}-\GeometricDist[n(v_k), d(v_k), n_j(v_k)]$.
+les décomptes d'évènement au sein des groupes $1$ et $2$. Sous $H_0$, $d_j(v_k)$ suit une loi hypergéométrique $\text{H}-\GeometricDist[n(v_k), n_j(v_k),  d(v_k)]$.
 \begin{definition}
-Une urne contient $N$ boules dont $K$ boules blanches et $N-K$ boules noires. On réalise $h$ tirage dans cette urne et on note $X$ le nombre de boules blanches tirées. La \va $X\sim \text{H}-\GeometricDist(N, K, h)$ admet une loi de probabilité donnée par
+Une urne contient $N$ boules dont $K$ boules blanches et $N-K$ boules noires. On réalise $h$ tirage aléatoire sans remise dans cette urne et on note $X$ le nombre de boules blanches tirées. La \va $X\sim \text{H}-\GeometricDist(N, K, h)$ admet une loi de probabilité donnée par
 $$
-\Prob(X = x)=\frac{\binom{K}{x}\binom{N-K}{h-x}}{\binom{N}{h}},\text{ pour }\max(0, h+K-N)\leq x\leq\min(K,h).
+\Prob(X = x)=\frac{\binom{K}{x}\binom{N-K}{h-x}}{\binom{N}{h}},\text{ pour }\max(0, h-(N-K))\leq x\leq\min(K,h).
 $$ 
 Les moyenne et variance ont données par 
 $$
 \E(X) =h\frac{K}{N},\text{ et }\V(X) = h\frac{K}{N}\frac{N-K}{N}\frac{N-h}{N-1}.
 $$
 \end{definition}
-La statistique du log-rang compare la valeur observée $O_{j,k} = d_i(v_k)$ à la valeur attendue $E_{j,k} = n_i(v_k)\frac{d(v_k)}{n(v_k)}$ sous $H_0$ avec 
+La statistique du log-rang compare la valeur observée $O_{j,k} = d_j(v_k)$ à la valeur attendue $E_{j,k} = d(v_k)\frac{n_j(v_k)}{n(v_k)}$ sous $H_0$ avec 
 \begin{equation}\label{eq:log_rank_stat}
 Z_j=\sum_{k: d(v_k)\geq 1}\frac{(O_{j,k} - E_{j,k})}{\sqrt{\sum_{k: d(v_k)\geq 1}V_{j,k}}}\sim \NormalDist(0,1),\text{ pour }j = 1,2,
 \end{equation}
 où
 $$
-V_{j,k}=n_j(v_k)\frac{d(v_k)}{n(v_k)}\frac{n(v_k)-d(v_k)}{n(v_k)}\frac{n(v_k)-n_j(v_k)}{n(v_k)-1}.
+V_{j,k}=d(v_k)\frac{n_j(v_k)}{n(v_k)}\frac{n(v_k)-n_j(v_k)}{n(v_k)}\frac{n(v_k)-d(v_k)}{n(v_k)-1}.
 $$
-La convergence \eqref{eq:log_rank_stat} est une application du théorème centrale limite, d'autant plus valide que $\#\{k: d(v_k)\geq 1\}$ est grand. Une meilleure approximation de la distribution asymptotique de la statistique de test a été obtenu par \citet{Peto1972}.
+La convergence \eqref{eq:log_rank_stat} est une application du théorème centrale limite\footnote{une généralisation du TCL de Lyapunov ou Lindeberg-Feller, voir \url{https://en.wikipedia.org/wiki/Central_limit_theorem}}, d'autant plus valide que $\#\{k: d(v_k)\geq 1\}$ est grand. Un autre test du log-rang consiste à élever la statistique de test au carré et alors $Z_j^2\sim \chi^2(1)$. Une meilleure approximation de la distribution asymptotique de la statistique de test a été obtenu par \citet{Peto1972}. On peut également pondérer les observation en ajoutant des poids $w_j$ avec 
+\begin{equation}\label{eq:log_rank_stat_weighted}
+Z_j=\sum_{k: d(v_k)\geq 1}w_j\frac{(O_{j,k} - E_{j,k})}{\sqrt{\sum_{k: d(v_k)\geq 1}w_j^2V_{j,k}}}\sim \NormalDist(0,1),\text{ pour }j = 1,2.
+\end{equation}
+

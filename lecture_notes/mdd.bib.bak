@@ -392,4 +392,16 @@
   publisher = {Cambridge University Press ({CUP})},
 }
 
+@Article{Wu2018,
+  author    = {Ruhao Wu and Bo Wang},
+  journal   = {Neurocomputing},
+  title     = {Gaussian process regression method for forecasting of mortality rates},
+  year      = {2018},
+  month     = {nov},
+  pages     = {232--239},
+  volume    = {316},
+  doi       = {10.1016/j.neucom.2018.08.001},
+  publisher = {Elsevier {BV}},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -6,43 +6,43 @@ Database file #1: mdd.bib
 Warning--empty journal in Thatcher1998
 You've used 29 entries,
             2773 wiz_defined-function locations,
-            833 strings with 10495 characters,
-and the built_in function-call counts, 12679 in all, are:
-= -- 1211
+            832 strings with 10433 characters,
+and the built_in function-call counts, 12555 in all, are:
+= -- 1193
 > -- 563
 < -- 26
 + -- 197
 - -- 168
-* -- 1036
-:= -- 1967
-add.period$ -- 114
+* -- 1016
+:= -- 1947
+add.period$ -- 112
 call.type$ -- 29
 change.case$ -- 142
 chr.to.int$ -- 29
 cite$ -- 59
-duplicate$ -- 591
-empty$ -- 1089
+duplicate$ -- 586
+empty$ -- 1081
 format.name$ -- 217
-if$ -- 2643
+if$ -- 2619
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 29
-newline$ -- 179
+missing$ -- 28
+newline$ -- 177
 num.names$ -- 116
-pop$ -- 232
+pop$ -- 239
 preamble$ -- 1
 purify$ -- 114
 quote$ -- 0
-skip$ -- 421
+skip$ -- 423
 stack$ -- 0
-substring$ -- 565
-swap$ -- 61
+substring$ -- 540
+swap$ -- 60
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 314
 warning$ -- 1
-while$ -- 129
+while$ -- 127
 width$ -- 0
-write$ -- 432
+write$ -- 427
 (There was 1 warning)

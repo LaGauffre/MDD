@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex TD1_MDD"] 1674740668 "TD1_MDD.aux" "TD1_MDD.bbl" "TD1_MDD" 1674740849
+["bibtex TD1_MDD"] 1701188921 "TD1_MDD.aux" "TD1_MDD.bbl" "TD1_MDD" 1701188922
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "TD1_MDD.aux" 1674740848 2409 95a788b46b06f46daa21a8c874761a81 "pdflatex"
+  "TD1_MDD.aux" 1701188922 3109 7984565cf2fbf9f04adb2d72df1f0a27 "pdflatex"
   "mdd.bib" 1673456666 2947 bf3a1e19267b0b0464e0422510e34e03 ""
   (generated)
   "TD1_MDD.bbl"
   "TD1_MDD.blg"
-["pdflatex"] 1674740848 "TD1_MDD.tex" "TD1_MDD.pdf" "TD1_MDD" 1674740849
-  "../figures/power_LT_VS_KS.pdf" 1673455606 5386 707f963428530e2c5c8bc5299a1e861f ""
+["pdflatex"] 1701188921 "TD1_MDD.tex" "TD1_MDD.pdf" "TD1_MDD" 1701188922
+  "../figures/power_LT_VS_KS.pdf" 1701188800 5400 29e4338509d63863cfb12717d52eb2fc ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -189,12 +189,12 @@
   "/usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty" 1635798903 56029 3f7889dab51d620aa43177c391b7b190 ""
   "/usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf" 1646502317 40171 cdab547de63d26590bebb3baff566530 ""
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
-  "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1666533384 2826442 d5dc231f9e137af6a89ef3d2834ebf05 ""
+  "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1664288841 2826439 dee74aad735af7933a71799c9e035791 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "TD1_MDD.aux" 1674740848 2409 95a788b46b06f46daa21a8c874761a81 "pdflatex"
-  "TD1_MDD.bbl" 1674740668 249 f02795ef25bc75094d8619cc88212cc4 "bibtex TD1_MDD"
+  "TD1_MDD.aux" 1701188922 3109 7984565cf2fbf9f04adb2d72df1f0a27 "pdflatex"
+  "TD1_MDD.bbl" 1701188921 249 f02795ef25bc75094d8619cc88212cc4 "bibtex TD1_MDD"
   "TD1_MDD.out" 0 -1 0 "pdflatex"
-  "TD1_MDD.tex" 1674740847 10829 b078c14c717b1175f60716c12ca10aaa ""
+  "TD1_MDD.tex" 1701188920 15264 932a9ada8577a0fe5e45f5ffeb373d22 ""
   (generated)
   "TD1_MDD.aux"
   "TD1_MDD.log"

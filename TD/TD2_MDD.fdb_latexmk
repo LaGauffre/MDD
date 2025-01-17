@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex TD2_MDD"] 1674740969 "TD2_MDD.aux" "TD2_MDD.bbl" "TD2_MDD" 1674740970
-  "../lecture_notes/mdd.bib" 1674580778 5872 daf40801319437f317b493effd7b0ad9 ""
+["bibtex TD2_MDD"] 1701192924 "TD2_MDD.aux" "TD2_MDD.bbl" "TD2_MDD" 1701193738
+  "../lecture_notes/mdd.bib" 1678265392 13012 aa0e1e00edc26323ee2dd8f517ae371f ""
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "TD2_MDD.aux" 1674740970 1589 a1ed929887fcfb95200aae25a24382ba "pdflatex"
+  "TD2_MDD.aux" 1701193738 2140 e15c66e420e625b8c204d37c1dd656cf "pdflatex"
   (generated)
   "TD2_MDD.bbl"
   "TD2_MDD.blg"
-["pdflatex"] 1674740969 "TD2_MDD.tex" "TD2_MDD.pdf" "TD2_MDD" 1674740970
+["pdflatex"] 1701193738 "TD2_MDD.tex" "TD2_MDD.pdf" "TD2_MDD" 1701193738
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -42,10 +42,12 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb" 1215737283 154600 ea54091d31de803b613ba9e80ca51709 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb" 1215737283 135942 859a90cad7494a1e79c94baf546d7de5 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb" 1215737283 110032 35e0196b03e20c9bc327f34ecd2026f9 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb" 1215737283 145929 f25e56369a345c4ff583b067cd87ce8e ""
@@ -185,12 +187,12 @@
   "/usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty" 1635798903 56029 3f7889dab51d620aa43177c391b7b190 ""
   "/usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf" 1646502317 40171 cdab547de63d26590bebb3baff566530 ""
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
-  "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1666533384 2826442 d5dc231f9e137af6a89ef3d2834ebf05 ""
+  "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1664288841 2826439 dee74aad735af7933a71799c9e035791 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "TD2_MDD.aux" 1674740970 1589 a1ed929887fcfb95200aae25a24382ba "pdflatex"
-  "TD2_MDD.bbl" 1674740969 281 4e7745e0f1ca066eec5d3a92c8908777 "bibtex TD2_MDD"
+  "TD2_MDD.aux" 1701193738 2140 e15c66e420e625b8c204d37c1dd656cf "pdflatex"
+  "TD2_MDD.bbl" 1701192924 501 e9adcf07862a8de9e480e906f02860b4 "bibtex TD2_MDD"
   "TD2_MDD.out" 0 -1 0 "pdflatex"
-  "TD2_MDD.tex" 1674740968 7180 07160874065766fa061bec046ff2afce ""
+  "TD2_MDD.tex" 1701193737 10775 932c883181d8a0f92841ab96e7ba3366 ""
   (generated)
   "TD2_MDD.aux"
   "TD2_MDD.log"

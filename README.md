@@ -8,22 +8,20 @@ Ce cours propose une introduction aux modèles de durée avec des applications e
 
 
 
-<!-- ### Travaux dirigées
+### Travaux dirigées
 
 Séance             | Enoncé
 -----------------   | -------------
-1 | [TD](TD/TD1_MAD_corrige.pdf)
-2 | [TD](TD/TD2_MAD_corrige.pdf)
-3 | [TD](TD/TD3_MAD_corrige.pdf)
-4 | [TD](TD/TD4_MAD_corrige.pdf)
-5 | [TD](TD/TD5_MAD_corrige.pdf)
-6 | [TD](TD/TD6_MAD_corrige.pdf)
- -->
-<!-- ### Annales d'examens
+1 | [TD](TD/TD1_MDD.pdf)
+2 | [TD](TD/TD2_MDD.pdf)
+3 | [TD](TD/TD3_MDD.pdf)
+
+
+### Annales d'examens
 
 Année            | Enoncé
 -----------------   | -------------
-2018-2019 | [Janvier](Examen/2018-2019/Exam_MAD_M1_2018-2019.pdf), [Juin](Examen/2018-2019/Rattrapage_MAD_M1_2018-2019.pdf)
-2019-2020 | [Janvier](Examen/2019-2020/Final/Exam_MAD_Janvier_2020.pdf), [Juin](Examen/2019-2020/Rattrapage/Exam_MAD_Juin_2020.pdf)
-2020-2021 | [Janvier](Examen/2020-2021/Exam_MAD_Janvier_2021.pdf), [Juin](Examen/2020-2021/Exam_MAD_Juin_2021.pdf)
-2021-2022 | [Janvier](Examen/2021-2022/M1Actu/Final/Exam_MAD_Janvier_2022_M1Actu.pdf), [Juin](Examen/2021-2022/Rattrapage/Exam_MAD_Juin_2022.pdf) -->
+Practice Exam | [Practice](TD/Practice_Exam.pdf)
+2022-2023 | [Mai](Examen/2022-2023/Exam_MDD_Mai_2023.pdf)
+2023-2024 | [Janvier](Examen/2023-2024/Exam_MDD_Jan_2024.pdf)
+2024-2025 | [Janvier](Examen/2024-2025/Exam_MDD_Jan_2025.pdf)

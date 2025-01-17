@@ -154,15 +154,17 @@ $$
 % \end{solution}
 \part Ecrire un code R qui simule des données depuis un modèle à hasard proportionel de Weibull et ajuste le modèle aux données. 
 \begin{enumerate}
-	\item Ecrire une fonction qui prend en entrée $\alpha$, $\beta$ et la matrice des covariables.
+	\item Ecrire une fonction qui prend en entrée $\alpha$, $\beta$ et la matrice des covariables et qui retourne un échantillon suivant le modèle à hasard proportionnel de Weibull. On pourra considérer deux covariables $Z_1\sim \BinomialDist(1, p)$ et $Z_2\sim\UnifDist([0,1])$.
 	\item Produire un dataframe contenant $1,000$ observations 
 	\begin{itemize}
-		\item pour chaque individu, on dispose de deux covariables $Z_1\sim \BinomialDist(1, p = 1/2)$ et $Z_2\sim\UnifDist([0,1])$.
+		\item pour chaque individu, on dispose de la valeur des deux covariables $Z_1\sim \BinomialDist(1, p = 1/2)$ et $Z_2\sim\UnifDist([0,1])$.
 		\item Les observations non censurées $t_i$ sont distribués suivant un modèle de Weibull à hasard proportionel tel que $\alpha = 1/2$ et $\beta = (-1/2\text{ }1/2)$
 		\item Les observations censurées à droite $x_i$ proviennent d'une variable de censure non informative $c_i$ suivant le même modèle que les observations c'est à dire un modèle de Weibull à hasard proportionel tel que $\alpha = 1/2$ et $\beta = (-1/2\text{ }1/2)$.
+		\item L'indication $\delta_i = \mathbb{I}_{t_i \leq c_i}$ sur la censure de l'observation $i$
 	\end{itemize}
-	\item Ecrire une fonction pour ajuster le modèle aux données et appliquer cette fonction à votre dataframe.
+	\item Ecrire une fonction pour ajuster le modèle aux données et appliquer cette fonction à votre dataframe. Il s'agit de maximiser la vraisemblance obntenu à la question a).
 	\item Vous pouvez comparer le résultat avec celui rendu par la fonction \texttt{survreg}\footnote{Voir \url{http://dwoll.de/rexrepos/posts/survivalParametric.html} pour un tuto} de la librairie \text{survival}.
+	\item Vous pouvez auusi regarder le résultat lorsque vous utiliser la fonction \texttt{coxph} de la librairie \text{survival}.
 \end{enumerate}
 \end{parts}
 \end{questions}

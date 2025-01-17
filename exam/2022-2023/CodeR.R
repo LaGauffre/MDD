@@ -1,0 +1,89 @@
+# Code Exam 2022-2023
+
+# Libraries ----
+library(tidyverse)
+library(ggplot2)
+library(xtable)
+library(lubridate)
+library(latex2exp)
+# Data ----
+Deaths <- read_table("~/Dropbox/Enseignements/UNISTRA/MDD/exam/Deaths_1x1.txt", 
+                         skip = 1)
+Exp <- read_table("~/Dropbox/Enseignements/UNISTRA/MDD/exam/Exposures_1x1.txt", 
+                            skip = 1)
+
+Deaths_V1 <- Deaths %>% filter(Year == 2000) %>% select(Age, Total) %>% rename(Dx = Total)
+Exp_V1 <- Exp %>% filter(Year == 2000) %>% select(Age, Total) %>% rename(E0x = Total)
+
+df_NDL <- Exp_V1 %>% left_join(Deaths_V1)
+print(xtable(df_NDL, type = "latex", digits = 0), include.rownames=FALSE)
+
+# Taux brut ----
+df_NDL_V1 <- df_NDL %>% mutate(qx = Dx/E0x, qx05 = Dx/E0x - sqrt(Dx/E0x*(1-Dx/E0x) / E0x) * qnorm(0.999),
+                               qx95 = Dx/E0x + sqrt(Dx/E0x*(1-Dx/E0x) / E0x) * qnorm(0.999))
+ggplot(data = df_NDL_V1) + geom_line( mapping = aes(x = as.numeric(Age), y = qx)) +
+  geom_line( mapping = aes(x = as.numeric(Age), y = qx05), linetype = "dashed") + 
+  geom_line( mapping = aes(x = as.numeric(Age), y = qx95), linetype = "dashed") +
+  xlim(0, 105) + labs(x = "Age", y = TeX(r"( $\q_x$ )")) + theme_bw() + ylim(0,1) + 
+  theme(axis.text=element_text(size=24), 
+        axis.title=element_text(size=24))
+ggsave("~/Dropbox/Enseignements/UNISTRA/MDD/exam/taux_brut.pdf")
+
+# Fonction de survie empirique
+Sx = c(1, cumprod(1-df_NDL_V1$qx))
+length(Sx)
+mortality_table <-  data.frame(Age = seq(0, 111, 1), lx = floor(100000*Sx))
+print(xtable(mortality_table, type = "latex", digits = 0), include.rownames=FALSE)
+mortality_table_V1 <- mortality_table %>% mutate(qx = (lx-lead(lx))/lx)
+ggplot(data = mortality_table_V1) + geom_line( mapping = aes(x = as.numeric(Age), y = qx))
+
+# Fit du modèle de Gompertz-Makeham
+qx <- mortality_table_V1$qx
+age <- seq(0,115,1)
+# INférence de b et c
+diff_qx <- lead(qx) - qx
+ss <- diff_qx > 0 & !is.na(diff_qx) & qx < 1
+df_makeham_bc <- data.frame(x = mortality_table_V1$Age[ss], y = log(diff_qx[ss]))
+(
+  reg_plot_1 <- ggplot(data = df_makeham_bc) + 
+    geom_point(mapping = aes(x=x, y=y)) +
+    xlim(0, 110) + labs(x = "x", title = TeX(r"( $\log(q_{x+1} - q_x)$ )"), y = "") + theme_bw() +
+    theme(axis.text=element_text(size=24), 
+          axis.title=element_text(size=24), 
+          title=element_text(size=24))
+  )
+res_bc <- lm(y~x, data = df_makeham_bc)
+summary(res_bc)
+alpha <- res_bc$coefficients[1]; beta <- res_bc$coefficients[2]
+plot(pmin(cumsum(exp(alpha + beta * age)), 1))
+c <- exp(beta); g <- exp(-exp(alpha) / (c-1)^2);
+plot(1- g^(c^age * (c - 1)))
+b <- -log(g)*log(c)
+
+# inference de a
+ss <- !is.na(qx) & qx < 1
+# df_makeham_a <- data.frame(x = c^(mortality_table_V1$Age[ss]) * (c-1)* log(g), y = log(1-qx[ss]))
+df_makeham_a <- data.frame(x = mortality_table_V1$Age[ss],
+                           y = exp(- qx[ss]-c^(mortality_table_V1$Age[ss]) * (c-1)* log(g)))
+(
+  reg_plot_2 <- ggplot(data = df_makeham_a) + 
+    geom_point(mapping = aes(x=x, y=y)) + 
+    xlim(0, 110) + labs(x = "x", title = TeX(r"( $\exp(-q_x - c^x(c-1)\log(g))$ )"), y = "") + theme_bw() +
+    theme(axis.text=element_text(size=24), 
+          axis.title=element_text(size=24), 
+          title=element_text(size=24))
+)
+s <- mean(df_makeham_a$y)
+# s <- exp(a)
+df_makeham_q <- data.frame(Age = age,qx = 1- s* g^((c^age)*(c-1)))
+ggplot() + 
+  geom_line(data = df_makeham_q, mapping = aes(x = Age, y = qx )) +
+  geom_line(data = mortality_table_V1,  mapping = aes(x = as.numeric(Age), y = qx), linetype = "dashed") + 
+  xlim(0, 115) + labs(x = "Age", y = TeX(r"( $q_x$ )")) + theme_bw() +
+  theme(axis.text=element_text(size=24), 
+        axis.title=element_text(size=24))
+ggsave("~/Dropbox/Enseignements/UNISTRA/MDD/exam/taux_smooth_makeham.pdf")
+
+library(gridExtra)
+reg_plots <- grid.arrange(reg_plot_1, reg_plot_2, ncol= 1)
+ggsave("~/Dropbox/Enseignements/UNISTRA/MDD/exam/reg_plots.pdf", reg_plots)

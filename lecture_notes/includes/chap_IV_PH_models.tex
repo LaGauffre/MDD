@@ -38,22 +38,26 @@ La vraisemblance du modèle pour les données $\Data = (x_k,\delta_k)_{k=1,\ldot
 \end{equation}
 où $\theta = (h_0,\beta)$. Il n'est pas possible d'inférer les paramètres avec la vraisemblance \eqref{eq:likelihood_cox} sans donner une structure au risque de base. 
 \begin{remark}
-Le modèle \eqref{eq:cox_proportional_hazard} est le modèle de \citet{Cox1972}. L'étude se focalise plus sur l'impact des covariable $Z_1,\ldots, Z_p$ que sur le risque de base $h_0$ qui peut prendre une forme arbitraire. \citet{Cox1972} défini une vraisemblance partielle qui correspond à la probabilité que les évènements se produisent dans l'ordre observé. Nous souhaitons également estimé le risque de base, nous allons donc supposer que $h_0$ est une fonction continue par morceaux, voir \citet{Breslow1975}.
+Le modèle \eqref{eq:cox_proportional_hazard} est le modèle de \citet{Cox1972}. L'étude se focalise plus sur l'impact des covariable $Z_1,\ldots, Z_p$ que sur le risque de base $h_0$ qui peut prendre une forme arbitraire. \citet{Cox1972} défini une vraisemblance partielle qui correspond à la probabilité que les évènements se produisent dans l'ordre observé. Nous souhaitons également estimé le risque de base, nous allons donc supposer que $h_0$ est une fonction constante par morceaux, voir \citet{Breslow1975}.
 \end{remark}
 Soit 
 $$
-0=v_0<v_1<v_2<\ldots<v_K<v_{K+1}=\infty,
+0<v_1<v_2<\ldots<v_K<v_{K+1}=\infty,
 $$
 tels que $v_1,\ldots, v_K$ correspondent aux observations ordonnées, distinctes et non censuré. Le risque de base est donnée par
 $$
-h_0(t)=\sum_{k=1}^{K}\alpha_k\ind_{(v_{k-1}, v_{k}]}(t),t\geq 0.
+h_0(t)=\sum_{k=1}^{K}\alpha_k\ind_{[v_{k}, v_{k+1})}(t),t\geq 0.
 $$
-Les paramètres du modèle sont données par $\theta = (\alpha, \beta)$. La log vraisemblance s'écrit
+Les paramètres du modèle sont données par $\theta = (\alpha, \beta)$. La vraisemblance s'écrit 
+\begin{equation*}
+\mathcal{L}(\Data;\theta) =\prod_{i=1}^n \prod_{k=1}^K\left[\alpha_k\e^{z_i\cdot \beta}\right]^{\delta_i\mathbb{I}_{x_i = v_k}}\cdot\exp\left(-\e^{z_i\cdot\beta}\alpha_k \int_0^{x_i}\ind_{[v_{k}, v_{k+1})}(s)\text{d}s\right) ,
+\end{equation*}
+On passe au log
 \begin{eqnarray*}
-l(\Data;\theta)&=&\sum_{i=1}^n\delta_i\{\log[h_0(x_i)]+z_i\beta\}-\e^{z_i\beta}\int_0^{x_i}h_0(s)\text{d}s\\
-&=& \sum_{i=1}^n\delta_i\sum_{k=1}^K\left[\log(\alpha_k)+\delta_i z_i\beta\right]\ind_{x_i = v_k} -\e^{z_i\beta}\sum_{k=1}^K\alpha_k\int_0^{x_i}\ind_{(v_{k-1}, v_k]}(s)\text{d}s\\
-&=& \sum_{k=1}^K\log(\alpha_k)d(v_k)+s_k\beta -\alpha_k\sum_{i=1}^{n}\int_0^{x_i}\e^{z_i\beta}\ind_{(v_{k-1}, v_k]}(s)\text{d}s\\
-&=& \sum_{k=1}^K\log(\alpha_k)d(v_k)+s_k\beta -\alpha_k\left\{\sum_{i=1}^{n}\e^{z_i\beta}\left[(v_k - v_{k-1})\ind_{x_i\geq v_k} +(x_i - v_{k-1})\ind_{(v_{k-1},v_k]}(x_i)\right]\right\}\\
+l(\Data;\theta)
+&=& \sum_{i=1}^n\sum_{k=1}^K\left[\log(\alpha_k)+ z_i\beta\right]\delta_i\ind_{x_i = v_k} -\e^{z_i\beta}\sum_{k=1}^K\alpha_k\int_0^{x_i}\ind_{[v_{k}, v_{k+1})}(s)\text{d}s\\
+&=& \sum_{k=1}^K\log(\alpha_k)d(v_k)+s_k\beta -\alpha_k\sum_{i=1}^{n}\int_0^{x_i}\e^{z_i\beta}\ind_{[v_{k}, v_{k+1})}(s)\text{d}s\\
+&=& \sum_{k=1}^K\log(\alpha_k)d(v_k)+s_k\beta -\alpha_k\left\{\sum_{i=1}^{n}\e^{z_i\beta}\left[(v_{k+1} - v_{k})\ind_{x_i\geq v_{k+1}} +(x_i - v_{k})\ind_{[v_{k}, v_{k+1})}(x_i)\right]\right\}\\
 &=& \sum_{k=1}^K\log(\alpha_k)d(v_k)+s_k\beta -\alpha_kE_k(\beta),\\
 \end{eqnarray*}
 où $d(v_k)$ est le nombre d'évènements se produisant exactement à l'instant $v_k$ et $s_k$ la somme des caractéristiques ($\sum_i \delta_i z_i$) de ces évènements. L'estimateur du maximum de vraisemblance $\widehat{\theta}$ est obtenu en annulant les dérivées premières, il vient 
@@ -61,21 +65,22 @@ $$
 \widetilde{\alpha}_k = \frac{d(v_k)}{E_k(\beta)}, 
 $$
 où 
-$$
-E_k(\beta) = \sum_{i=1}^{n}\e^{z_i\beta}\left[(v_k - v_{k-1})\ind_{x_i\geq v_k} +(x_i - v_{k-1})\ind_{(v_{k-1},v_k]}(x_i)\right],
-$$ 
+\begin{eqnarray*}
+E_k(\beta) &=& \sum_{i=1}^{n}\e^{z_i\beta}\left[(v_{k+1} - v_{k})\ind_{x_i\geq v_{k+1}} +(x_i - v_{k})\ind_{[v_{k}, v_{k+1})}(x_i)\right],\\
+&=& \sum_{i=1}^{n}\e^{z_i\beta}\left[v_{k+1}\land x_i - v_{k}\right]_+.
+\end{eqnarray*}
 est l'exposition.
-\begin{remark}
-Dans le papier original de \citet{Breslow1975}, les données censurés entre $v_{k-1}$ et $v_k$ sont remplacées par $v_{k-1}$ (l'observation non censuré la plus proche). Cela simplifie l'exposition qui devient 
-$$
-E_k(\beta) = \sum_{i=1}^{n}\e^{z_i\beta}(v_k - v_{k-1})\ind_{x_i\geq v_k}.
-$$
-\end{remark}
+% \begin{remark}
+% Dans le papier original de \citet{Breslow1975}, les données censurés entre $v_{k}$ et $v_{k+1}$ sont remplacées par $v_{k+1}$ (l'observation non censuré la plus proche par excès). Cela simplifie l'exposition qui devient 
+% $$
+% E_k(\beta) = \sum_{i=1}^{n}\e^{z_i\beta}(v_{k+1} - v_{k})\ind_{x_i\geq v_k}.
+% $$
+% \end{remark}
 On recherche $\beta$ qui annule
 $$
 \frac{\partial}{\partial \beta}l[\Data; (\widetilde{\alpha},\beta) ] = \sum_{k=1}^K s_k - d(v_k)\frac{E_k'(\beta)}{E_k(\beta)}.
 $$
-Le programme d'optimisation alterne les mises à jour des $\tilde{\alpha}$ et $\beta$ (numériquement pour $\beta$). Les estimateur de $\alpha$ et $\beta$ sont convergent et asymptotiquement normaux puisque issu du maximum de vraisemblance, la matrice de variance-covariance est donnée par la matrice Hessienne de la log vraisemblance
+Le programme d'optimisation alterne les mises à jour des $\tilde{\alpha}$ et $\beta$ (numériquement pour $\beta$). Les estimateurs de $\alpha$ et $\beta$ sont convergents et asymptotiquement normaux puisque issus du maximum de vraisemblance, la matrice de variance-covariance est donnée par la matrice Hessienne de la log vraisemblance
 $$
 I_n(\theta) = \left[-\frac{\partial^2}{\partial\theta^2}l\left(\Data;\widehat{\theta}\right)\right].
 $$ La fonction de hasard cumulée de base est estimée par 
@@ -85,15 +90,15 @@ $$
 Il est possible d'obtenir une loi asymptotique pour cette estimateur, voir \citet{Spiekerman1998}, afin de construire des intervalles de confiance.
 \section{Test d'hypothèse}
 \subsection{Significativité des coefficients: le test de Wald}
-Pour un paramètre univarié $\theta$ dont l'estimateur $\widehat{\theta}$est asymptotiquement normal. On peut effectuer une test de Wald pour tester sa nullité
+Pour un paramètre univarié $\beta$ dont l'estimateur $\widehat{\beta}$ est asymptotiquement normal. On peut effectuer une test de Wald pour tester sa nullité
 $$
-(H_0): \theta =0\text{  }(H_1):\theta\neq 0.
+(H_0): \beta =0\text{  }(H_1):\beta\neq 0.
 $$
 La statistique de test est donnée par
 $$
-\frac{\widehat{\theta}}{\widehat{\text se}}\sim\NormalDist(0,1),
+\frac{\widehat{\beta}}{\widehat{\text se}}\sim\NormalDist(0,1),
 $$ 
-où $\widehat{\text se}$ est une estimation de l'écart-type type de $\widehat{\theta}.$ Ici la racine carré du coefficient diagonal correspondant de l'inverse de la matrice de Fisher.
+où $\widehat{\text se}$ est une estimation de l'écart-type type de $\widehat{\beta}.$ Ici la racine carré du coefficient diagonal correspondant de l'inverse de la matrice de Fisher.
 \subsection{Significativité du modèle: le test du rapport de vraisemblance}
 Le test du rapport de vraisemblance test des hypothèses du type
 $$
@@ -103,15 +108,15 @@ où $\Theta_0$ est une restriction de l'espace des paramètres $\Theta$, avec $\
 $$
 \lambda = 2\log\frac{\underset{\theta \in \Theta}{\sup}\mathcal{L}\left(\Data ; \theta\right)}{\underset{\theta \in \Theta_0}{\sup}\mathcal{L}\left(\Data ; \theta\right)}.
 $$
-L'ensemble $\Theta_0$ consiste souvent en l'ensemble $\Theta$ pour lequel certain paramètre sont fixés. Supposons que $\theta = (\theta_1,\ldots,\theta_p)$ et que l'on souhaite tester l'hypothèse
+L'ensemble $\Theta_0$ consiste souvent en l'ensemble $\Theta$ pour lequel certains paramètres sont fixés. Supposons que $\theta = (\theta_1,\ldots,\theta_p)$ et que l'on souhaite tester l'hypothèse
 $$
 (H_0):\theta\in \Theta_0= \{\theta : \theta_1 = \theta_1^0,\ldots,\theta_q = \theta^0_q\},\text{ tel que } q \leq p, 
 $$
 alors 
 $$
-\lambda \sim \chi^2_{q}.
+\lambda \sim \chi^2_{q},
 $$
-La significativité du modèle de Cox test l'hypothèse de nullité simultanée de tout les coefficients. Concrètement 
+où $q$ est différence entre la dimension de $\Theta$ et $\Theta_0$. La significativité du modèle de Cox test l'hypothèse de nullité simultanée de tout les coefficients. Concrètement 
 $$
 (H_0): \beta_1=0,\ldots\beta_p = 0\text{ }(H_1):\beta_1\neq0,\ldots\beta_p \neq 0,
 $$
@@ -125,21 +130,21 @@ La loi de $Z|T=t$ est obtenue par
 \begin{eqnarray*}
 \Prob(Z=z|T=t) &=& \frac{\Prob(Z=z,T=t)}{\Prob(T=t)}\\
 &=&\frac{\Prob(Z=z,T=t, T\geq t)}{\sum_{z\in E}\Prob(T=t, Z=z, T\geq t)} \\
-&=& \frac{\Prob(T=t|Z=z,T\geq t)\Prob(Z=z,T\geq t)}{\sum_{z\in E}\Prob(T=t| Z=z, T\geq t)}\\
-&=& \frac{h_0(t)\e^{z\beta}\Prob(Z=z,T\geq t)}{\sum_{z\in E}\Prob(T=t| Z=z, T\geq t)\Prob(Z=z, T\geq t)}\\
+&=& \frac{\Prob(T=t|Z=z,T\geq t)\Prob(Z=z,T\geq t)}{\sum_{z\in E}\Prob(T=t| Z=z, T\geq t)\Prob(Z=z, T\geq t)}\\
+&=& \frac{h_0(t)\e^{z\beta}\Prob(Z=z,T\geq t)}{\sum_{z\in E}h_0(t)\e^{z\beta}\Prob(Z=z, T\geq t)}\\
 &=&\frac{\E(e^{\beta Z}\ind_{\{Z = z, T\geq t\}})}{\E(e^{\beta Z}\ind_{T\geq t})}
 \end{eqnarray*}
 En présence d'un échantillon \iid $(t_i, z_i)_{i = 1,\ldots, n}$, cette loi peut être estimée par 
 $$
 \widehat{\Prob}(Z=z|T=t) = \frac{\sum_{i = 1}^n\e^{\widehat{\beta} z_i}\ind_{\{ z_i = z, t_i\geq t\}}}{\sum_{i = 1}^n \e^{\widehat{\beta} z_i}\ind_{t_i\geq t}}.
 $$
-cette estimateur demeure valide en remplaçant les observation $t_i$ par les observations censurées à droite $x_i$. Soient $v_1<\ldots < v_K$ les temps d'occurence des évènements distincts et non censurés. On peut comparer les caractéristiques moyenne observée et attendu des évènement s'étant produit aux temps $v_k,k=1,\ldots, K$ en calculant la différence
+cette estimateur demeure valide en remplaçant les observations $t_i$ par les observations censurées à droite $x_i$. Soient $v_1<\ldots < v_K$ les temps d'occurence des évènements distincts et non censurés. On peut comparer les caractéristiques moyennes observées et attendues des évènements s'étant produits aux temps $v_k,k=1,\ldots, K$ en calculant la différence
 $$
 r_k = Z(v_k) - \E(Z|T = v_k) = \frac{\sum_{i=1}^nz_i\ind_{x_i = v_k}}{d(v_k)}  - \sum_{i = 1}^nz_i\frac{\e^{\widehat{\beta} z_i}\ind_{\{ x_i\geq v_k\}}}{\sum_{i = 1}^n \e^{\widehat{\beta} z_i}\ind_{x_i\geq v_k}}.
 $$
 Les $r_k$ sont appelés résidus de \citet{SCHOENFELD1982}. Nous allons tester l'hypothèse de proportionalité séparément pour chacune des variables explicatives, cela revient à considérer $Z$ et $\beta$ comme des scalaires. On définit une fonction de hasard alternative avec 
 $$
-h^{\text{alt}}(t|z) = h_0(t)\exp[z\beta(t)] = h_0(t)\exp[z(\widehat{\beta}+\gamma g(t)],
+h^{\text{alt}}(t|z) = h_0(t)\exp[z\beta(t)] = h_0(t)\exp[z(\widehat{\beta}+\gamma g(t))],
 $$
 pour $\gamma\in \RL$ et $g:\RL_+\rightarrow\RL$. On test la significativité du coefficient $\gamma$ avec 
 $$
@@ -159,7 +164,7 @@ V(\widehat{\beta}, v_k) = \frac{\partial}{\partial x} M(x, v_k)\Big|_{x = \wideh
 $$
 L'espérance sous $H_0$ des résidus standardisés $r_k^\ast  = r_k /V(\widehat{\beta}, v_k)$ vérifie 
 $$
-\E(r_k^\ast) = \gamma g(v_k).
+\E(r_k^\ast) = \gamma g(v_k)\Leftrightarrow r_k^\ast + \hat{\beta} = \beta(v_k)\text{ (Voir le graphique de l'application en R)}.
 $$
 Cela suggère une relation linéaire entre les $r_k^\ast$ et les $g(v_k)$. On peut choisir pour $g$ une fonction arbitraire. Un choix commun est l'identité. La significativité du coefficient $\gamma$ est établi par un un test de student sur le coefficient $\gamma$ vu comme la pente de la regression linéaire entre les série $r_k^\ast$ et $g(t_k)$. La significativité de toutes les covariables simultanément est possible également, grâce aux travaux de \citet{GRAMBSCH1994}.
 

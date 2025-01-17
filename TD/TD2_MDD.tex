@@ -13,7 +13,7 @@
 \shadedsolutions
 
 % Define course info
-\def\semester{Semestre 2}
+\def\semester{Semestre 1}
 \def\course{Modèle de duréee M1 DUAS}
 \def\name{P.-O. Goffard}
 %\def\quizdate{10/5, 10/6}
@@ -114,7 +114,7 @@ où $0=v_1 <v_2\ldots< v_{k+1} = \infty$, et $\alpha_1,\ldots, \alpha_k\geq 0$.
 \begin{parts}
 	\part Si $k = 1$, quel est la loi de $T$.
 	\begin{solution}
-	Il s'agit de la loi exponentielle de paramètre $\theta_1$
+	Il s'agit de la loi exponentielle de paramètre $1/\alpha_1$
 	\end{solution}
 	\part Pour $k> 1$, donner l'expression de la fonction de survie
 .
@@ -122,8 +122,9 @@ où $0=v_1 <v_2\ldots< v_{k+1} = \infty$, et $\alpha_1,\ldots, \alpha_k\geq 0$.
 On a 
 \begin{eqnarray*}
 H(t) &=& \int_0^t h(s)\text{d}s\\
-&=& \sum_{l=1}^k\alpha_l(v_{l+1}-v_{l})\ind_{t>v_l}+ \sum_{l=1}^k\alpha_l(t-v_{l})\ind_{t\in\left[v_{l}, v_{l+1}\right)}\\
-&=& \sum_{l=1}^k\alpha_l(t\land v_{l+1}-v_{l})_+ = \sum_{l=1}^k\max(x_i\land v_{l+1} - v_{l}, 0)
+&=& \sum_{l=1}^k 0\cdot \alpha_l \cdot\ind_{t<v_l} + \alpha_l\cdot(t-v_{l})\ind_{t\in\left[v_{l}, v_{l+1}\right)}+\alpha_l\cdot(v_{l+1}-v_{l})\ind_{t\geq v_{l+1}}\\
+&=&\text{Faire le graphique de }t\mapsto0\cdot \alpha_l \cdot\ind_{t<v_l} + \alpha_l\cdot(t-v_{l})\ind_{t\in\left[v_{l}, v_{l+1}\right)}+\alpha_l\cdot(v_{l+1}-v_{l})\ind_{t\geq v_{l+1}}\\
+&=& \sum_{l=1}^k\alpha_l(t\land v_{l+1}-v_{l})_+ = \sum_{l=1}^k\alpha_l\max(t\land v_{l+1} - v_{l}, 0)
 \end{eqnarray*}
 puis $S(t) = \exp[-H(t)]$.
 \end{solution}
@@ -174,7 +175,7 @@ $$
 \begin{solution}
 La matrice d'information de Fisher est estimée par 
 $$
-(\widehat{I}_n)_{i,j} = -\frac{\partial}{\partial\alpha_i\partial\alpha_j}l(\mathcal{D};\theta) = \begin{cases}e(v_i)^2/d(v_i),&\text{ si }i=j,\\
+(I_n(\widehat{\theta}))_{i,j} = -\frac{\partial}{\partial\alpha_i\partial\alpha_j}l(\mathcal{D};\theta) = \begin{cases}e(v_i)^2/d(v_i),&\text{ si }i=j,\\
 0,&\text{ sinon.}
 \end{cases}
 $$
@@ -187,34 +188,28 @@ $$
 \alpha_l\in[\widehat{\alpha}_l \pm z_{1-\epsilon/2}\mathbb{V}(\widehat{\alpha}_l)]
 $$
 \end{solution}
-\part Peut on proposer un test pour l'hypothèse $\alpha_1=\ldots = \alpha_k = \alpha_O$.
-\begin{solution}
-On peut proposer un test de Wald avec comme statistique de test
-$$
-\,^t(\alpha-\alpha_0) \widehat{I}_n^{-1}(\alpha-\alpha_0) \sim\NormalDist(0,\text{Id})
-$$
-\end{solution}
+% \part Peut on proposer un test pour l'hypothèse $\alpha_1=\ldots = \alpha_k = \alpha_0$.
+% \begin{solution}
+% On peut proposer un test de Wald avec comme statistique de test
+% $$
+% \,^t(\alpha-\alpha_0) \widehat{I}_n^{-1}(\alpha-\alpha_0) \sim\NormalDist(0,\text{Id})
+% $$
+% \url{https://en.wikipedia.org/wiki/Wald_test}
+% \end{solution}
 \end{parts}
 \question Le modèle de Gompertz-Makeham, voir \cite{Makeham1860}, définie la fonction de hasard d'une v.a T par 
 $$
 h(t) = a+b\cdot c^t,
 $$
-avec $a,b,c\geq 0$. il s'agit d'un modèle adaptté à la modélisation de la durée de vie humaine, les paramètre $b$ et $c$ accomode l'augmentation progressive du risque avec l'âge, tandis que le paramètre $a$ permet de prendre en compte les décès accidentels.
+avec $a,b,c\geq 0$. il s'agit d'un modèle adapté à la modélisation de la durée de vie humaine, les paramètres $b$ et $c$ accomodent l'augmentation progressive du risque avec l'âge, tandis que le paramètre $a$ permet de prendre en compte les décès accidentels.
 \begin{parts}
-\part Donner l'expression de la fonction de hasard cumulé, de la  survie et de la densité de $T$.
+\part Donner l'expression de la fonction de hasard cumulé de $T$.
 \begin{solution}
 La fonction de hasard cumulé est donnée par 
 $$
 H(t) = \int_0^th(s)\text{ds} = at+\frac{b}{\ln c}\left(c^t - 1\right).
 $$
-La fonction de survie est donnée par 
-$$
-S(t) = \exp(-H(t)),
-$$
-et la fonction de densité par 
-$$
-f(t) = h(t)S(t).
-$$
+
 \end{solution}
 \part En présence de censure à droite, écrire la log vraisemblance du modèle pour un échantillon
 $$
@@ -224,23 +219,23 @@ $$
 La log vraisemblance en présence de données censurées s'écrit
 \begin{eqnarray*}
 l(\mathcal{D};\theta)&=& \sum_{k=1}^n\delta_k\log h(x_k;\theta)+\sum_{k=1}^n\log S(x_k;\theta)\\
-&=& \delta_k\log(a+bc^t) + \sum_{k=1}^n\left[-ax_k - \frac{b}{\ln c}(c^{x_{k}}-1)\right].\\
+&=& \sum_{k=1}^n\delta_k\log(a+bc^{x_k}) + \left[-ax_k - \frac{b}{\ln c}(c^{x_{k}}-1)\right].\\
 \end{eqnarray*}
 \end{solution}
 \part Calculer la dérivée première par rapport à chacun des paramètres du modèle (soit le gradient).
 \begin{solution}
 On a 
 $$
-\frac{\partial}{\partial a}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k}{a+bc^{x_k}} - \sum_{k=1}^n x_k,
+\frac{\partial}{\partial a}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k}{a+bc^{x_k}} -  x_k,
 $$
 
 $$
-\frac{\partial}{\partial b}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k c^{x_k}}{a+bc^{x_k}} - \sum_{k=1}^n \frac{c^{x_k}-1}{\ln c}
+\frac{\partial}{\partial b}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k c^{x_k}}{a+bc^{x_k}} - \frac{c^{x_k}-1}{\ln c}
 $$
 et
 $$
 \frac{\partial}{\partial c}l(\mathcal{D};\theta)= \sum_{k=1}^n\frac{\delta_k bx_k c^{x_k-1}}{a+bc^{x_k}} 
-+ \sum_{k=1}^n \left[\frac{b(c^{x_k}-1)}{c(\ln c)^2}-\frac{b x_k c^{x_k}}{\ln c}\right].
++ \frac{b(c^{x_k}-1)}{c(\ln c)^2}-\frac{b x_k c^{x_k}}{\ln c}.
 $$
 \end{solution}
 \part Ecrire un code R permettant de faire l'inférence du modèle de Gompertz-Makeham. Le code doit comprendre

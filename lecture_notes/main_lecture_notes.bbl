@@ -26,6 +26,10 @@ Karim Barigou, Pierre-Olivier Goffard, St{\'{e}}phane Loisel, and Yahia Salhi.
 \newblock \emph{International Journal of Forecasting}, mar 2022.
 \newblock \doi{10.1016/j.ijforecast.2022.01.011}.
 
+\bibitem[Biessy(2023)]{Biessy2023}
+Guillaume Biessy.
+\newblock Revisiting whittaker-henderson smoothing, 2023.
+
 \bibitem[Boumezoued(2020)]{Boumezoued2020}
 Alexandre Boumezoued.
 \newblock Improving {HMD} mortality estimates with {HFD} fertility data.
@@ -190,13 +194,6 @@ Larry Wasserman.
 \newblock \emph{All of Statistics A Concise Course in Statistical Inference}.
 \newblock Springer, 2013.
 \newblock ISBN 9780387217369.
-
-\bibitem[Weinert(2007)]{Weinert2007}
-Howard~L. Weinert.
-\newblock Efficient computation for whittaker-henderson smoothing.
-\newblock \emph{Computational Statistics {\&} Data Analysis}, 52\penalty0
-  (2):\penalty0 959--974, oct 2007.
-\newblock \doi{10.1016/j.csda.2006.11.038}.
 
 \bibitem[Wilmoth et~al.(2007)Wilmoth, Andreev, Jdanov, Glei, Boe, Bubenheim,
   Philipov, Shkolnikov, and Vachon]{Wilmoth2007}

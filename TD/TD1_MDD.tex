@@ -106,32 +106,32 @@
 \vspace*{2em}}
 
 \begin{questions}
-\question L'objectif est de déterminer l'estimateur du maximum de vraisemblance du maximum de vraisemblance de la loi exponentielle $\ExpDist(\beta)$ de densité 
+\question L'objectif est de déterminer l'estimateur du maximum de vraisemblance de la loi exponentielle $\ExpDist(\beta)$ de densité 
 $$
 f(t) = \frac{\e^{-t/\beta}}{\beta}\ind_{(0,\infty)}(t).
 $$
-Soit $\mathcal{D} = \{t_1, \ldots,t_n\}$ un échantillon \iid de réalisation d'une \va exponentielle.
+Soit $\mathcal{D} = \{t_1, \ldots,t_n\}$ un échantillon \iid de réalisations d'une \va exponentielle.
 \begin{parts}
-\part Donner l'estimateur du maximum de vraisemblance $\widehat{\theta}$.
+\part Donner l'estimateur du maximum de vraisemblance $\widehat{\beta}$.
 \begin{solution}
 La log vraisemblance s'écrit
 $$
-l(\mathcal{D};\theta) = -n\log(\beta)-\frac{1}{\beta}\sum t_i.
+l(\mathcal{D};\beta) = -n\log(\beta)-\frac{1}{\beta}\sum t_i.
 $$
 On a 
 $$
-\frac{\partial l}{\partial \theta}(\mathcal{D};\theta) = -n\frac{n}{\beta}+\frac{1}{\beta^2}\sum t_i.
+\frac{\partial l}{\partial \beta}(\mathcal{D};\beta) = -n\frac{n}{\beta}+\frac{1}{\beta^2}\sum t_i.
 $$
 On en déduit que 
 $$
-\frac{\partial l}{\partial \theta}(\mathcal{D};\theta) = 0\Leftrightarrow \widehat{\beta} = \frac{\sum t_i}{n},
+\frac{\partial l}{\partial \beta}(\mathcal{D};\beta) = 0\Leftrightarrow \widehat{\beta} = \frac{\sum t_i}{n},
 $$
 après avoir vérifié que
 $$
-\frac{\partial l}{\partial \theta}(\mathcal{D};\widehat{\theta}) < 0.
+\frac{\partial l}{\partial \beta}(\mathcal{D};\widehat{\beta}) < 0.
 $$
 \end{solution}
-\part Supposons que nous soyons en présence de données censurées, avec une censure à droite, non informative, de niveau $c_1,\ldots, c_n$. Donner l'estimateur du maximum de vraisemblance de $\beta$.
+\part Supposons que nous soyons en présence de données censurées, avec une censure à droite, non informative, de niveaux $c_1,\ldots, c_n$. Donner l'estimateur du maximum de vraisemblance de $\beta$.
 
 \begin{solution}
 Les observations sont 
@@ -144,7 +144,7 @@ $$
 $$
 On en déduit que
 $$
-\frac{\partial l}{\partial \theta}(\mathcal{D};\theta) = 0\Leftrightarrow \widehat{\beta} = \frac{\sum x_i}{\sum \delta_i}.
+\frac{\partial l}{\partial \beta}(\mathcal{D};\beta) = 0\Leftrightarrow \widehat{\beta} = \frac{\sum x_i}{\sum \delta_i}.
 $$
 On peut vérifier la cohérence de l'estimation. En prenant $C\rightarrow \infty$, on retombe sur l'estimateur obtenu à la question 1.
 \end{solution}
@@ -166,7 +166,122 @@ On peut vérifier la cohérence de l'estimation. En prenant $C\rightarrow \infty
 % $$
 % L'estimateur est exactement le même qu'à la question 2.
 % \end{solution}
+\part Supposons que nous soyons en présence de données tronquées, avec une troncature à gauche, non informative, de niveaux $c$ pour $i = 1,\ldots, n$. Donner l'estimateur du maximum de vraisemblance de $\beta$.
 
+\begin{solution}
+La densité de probabilité pour des observation tronquées à gauche au niveau $c$ est donnée par 
+$$
+f_{[c,\infty)]}(t) = \frac{\e^{-\beta t}}{\beta\e^{-\beta c}}\mathbb{I}_{[c,\infty)]}(t).
+$$
+La log-vraisemblance s'écrit 
+$$
+l(\mathcal{D};\beta) = -n\ln(\beta)-\left[\sum_i t_i - nc\right] /\beta.
+$$
+On en déduit que
+$$
+\frac{\partial l}{\partial \beta}(\mathcal{D};\beta) = 0\Leftrightarrow \widehat{\beta} = \frac{\sum x_i}{n} - c.
+$$
+On peut vérifier la cohérence de l'estimation. En prenant $c = 0$, on retombe sur l'estimateur obtenu à la question 1.
+\end{solution}
+\end{parts}
+\question Soit $T$ la durée d'un évènement, la durée de vie résiduelle $X$ d'un évènement ayant commencé il y a $\theta$ unités de temps est définie par 
+$$
+X_\theta \sim  T-\theta|T>\theta.
+$$
+Il s'agit par exemple de la durée de vie résiduelle d'un individu d'âge $\theta$. On notera $S_\theta(x) = \Prob(X_\theta>x)$
+\begin{parts}
+\part Exprimer l'espérance de vie $\E(T)$ en fonction d'une intégrale de $S(t) = \mathbb{P}(T>t)$
+\begin{solution}
+On ré-écrit la v.a. $T$ comme 
+$$
+T = \int_0^{\infty}\mathbb{I}_{[0,T]}(t)\text{d}t
+$$
+puis par définition de l'espérance et le théorème de Fubini-Tonnelli, il vient
+\begin{eqnarray*}
+\E(T) &=& \int_\Omega \int_0^{\infty}\mathbb{I}_{[0,T]}(t)\text{d}t\text{d}\Prob\\
+&=&  \int_0^{\infty}\int_\Omega\mathbb{I}_{[0,T]}(t)\text{d}\Prob\text{d}t\\
+&=&  \int_0^{\infty}S(t)\text{d}t.
+\end{eqnarray*}
+\end{solution}
+\part Exprimer la fonction de durée de vie résiduelle $\E(X_\theta):= \E(X-\theta|X >\theta)$ en fonction d'une intégrale de $S(t)$.
+\begin{solution}
+On peut commencer par donner la fonction de survie de $X_\theta$ en fonction de $T$, il vient 
+$$
+S_\theta(x) = \Prob(X - \theta >x|X>\theta) =  \Prob(X >x +\theta|X>\theta) = \frac{S(x+\theta)}{S(\theta)}.
+$$
+On utilise ensuite la question précédente pour écrire 
+$$
+\mathbb{E}(X_\theta) = \int_0^\infty\frac{S(x+\theta)}{S(\theta)}\text{d}x.
+$$
+\end{solution}
+\part A partir de maintenant, nous supposons que $X_\theta \sim \ParetoDist(\alpha, \theta)$ (loi de Pareto), avec $\alpha >1$ tel que 
+$$
+S_\theta(x)  =\theta^\alpha(x+\theta)^{- \alpha},\text{ }x>0.
+$$
+Calculer $\E(X_\theta)$. Pensez-vous que ce modèle est adapté à la durée de vie humaine? 
+\begin{solution}
+\begin{equation*}
+\E(X_\theta) = \int_0^\infty S_\theta(x)\text{dx} = \frac{\theta}{\alpha-1}.
+\end{equation*}
+Ce modèle n'est pas adapté car la durée de vie résiduelle augmente avec l'âge !
+\end{solution}
+\part Soit un évènement ayant duré $\theta$ unités de temps, exprimer la fonction de survie $S_{Y_x}(t)$ de 
+$$
+Y_x \sim X_\theta - x|X_\theta >x
+$$
+il s'agit de la durée résiduelle dans $x$ unités de temps d'un évènement ayant déjà durée $\theta$ unités de temps. Quelle remarque peut-on faire?
+\begin{solution}
+Soit $0< x < y$, on a 
+$$
+S_{Y_x}(y) = \frac{S_{\theta} (y+x)}{S_{\theta} (x)} = \left(\frac{\theta+ x}{\theta +y}\right)^\alpha = \left(\frac{\theta+ x}{\theta +x + y}\right)^\alpha.
+$$
+On observe que la durée de vie résiduelle pour une loi de Pareto est encore distribué suivant une loi de Pareto puisque 
+$$
+Y_x\sim\ParetoDist(\alpha,\theta+x).
+$$
+\end{solution}
+\part Soit un groupe de $n$ évènements ayant déja durés $\theta_1,\ldots, \theta_n$ unités de temps respectivement. Nous observons les durées de vie résiduelles suivantes $\mathcal{D} = \{x_1,\ldots, x_n\}$, donner l'estimateur du maximum de vraisemblance de $\alpha$. 
+\begin{solution}
+La fonction de vraisemblance s'écrit
+$$
+L(\mathcal{D};\alpha)  =\prod_{i=1}^{n}f_{\theta_i}(x_i),
+$$                                                             
+où 
+$$
+f_\theta(x) = -S_{\theta}'(x) = \alpha\theta^\alpha(x+\theta)^{-\alpha-1}.
+$$                   
+La log-vraisemblance s'écrit donc 
+$$
+l(\mathcal{D};\alpha) = \alpha \sum_{i = 1}^n\log(\theta_i)+ n\log(\alpha)-(\alpha + 1)\sum_{i = 1}^n\log(\theta_i + x_i)
+$$
+L'estimateur du maximum de vraisemblance est donnée par 
+$$
+\widehat{\alpha} = \frac{n}{\sum_{i=1}^n\log\left(1+\frac{\theta_i}{x_i}\right)}.
+$$
+
+\end{solution}
+\part Supposons que notre groupe d'évènement n'est observé que pendant $c$ années. Donner l'estimateur du maximum de vraisemblance de $\alpha$ pour les données censurées à droite avec 
+$$
+z_i = x_i\land c,\text{ }i = 1,\ldots, n.
+$$
+\begin{solution}
+On note $\delta_i = \mathbb{I}_{x_i < c}$ et $\mathcal{D} = \{(z_i,\delta_i)\}_{i =1,\ldots, n}$. La fonction de vraisemblance s'écrit 
+$$
+L(\mathcal{D};\alpha) = \prod_{i=1}^nh_{\theta_i}(z_i)^{\delta_i}S_{\theta_i}(z_i),
+$$
+où 
+$$
+h_\theta(x) = \frac{f_\theta(x)}{S_{\theta}(x)} = \frac{\alpha}{x+\theta}.
+$$
+On en déduit la log-vraisemblance avec
+$$
+l(\mathcal{D};\alpha) = \log(\alpha)\sum_{i=1}^n\delta_i-\sum_{i=1}^n \delta_i\log(z_i+\theta_i) + \alpha\sum_{i=1}^n\log(\theta_i) -  \alpha\sum_{i=1}^n\log(\theta_i + z_i).
+$$
+L'estimateur du maximum de vraisemblance est donné par 
+$$
+\widehat{\alpha} = \frac{\sum_i \delta_i}{\log\left(1 + \frac{\theta_i}{z_i}\right)}
+$$
+\end{solution}
 \end{parts}
 \question Nous allons construire un test d'adéquation à la loi exponentielle $\ExpDist(\beta)$ de densité 
 $$
@@ -183,9 +298,9 @@ $$
 $$
 Quelle est la distribution de $T/\widehat{\beta}_n$ lorsque $n\rightarrow\infty$?
 \begin{solution}
-$T/\widehat{\beta}_n\overset{D}{\rightarrow} \ExpDist(1)$
+$T/\widehat{\beta}_n\overset{D}{\rightarrow} \ExpDist(1)$, il s'agit d'une application du théorème de Slutsky \url{https://en.wikipedia.org/wiki/Slutsky%27s_theorem}.
 \end{solution}
-\part Donner l'expression de la transformée de Laplace $\psi(\theta)$ de $Y\sim \ExpDist(\beta=1)$ et montrer qu'elle vérifie l'équation différentielle suivante
+\part Donner l'expression de la transformée de Laplace $\psi(\theta) = \E(e^{-\theta Y})$ de $Y\sim \ExpDist(\beta=1)$ et montrer qu'elle vérifie l'équation différentielle suivante
 $$
 \psi'(\theta)(1+\theta) + \psi(\theta) = 0
 $$
@@ -205,7 +320,7 @@ $$
 $$
 A quoi correspond cette quantité?
 \begin{solution}
-Il s'agit d'un estimateur assymptotiquement sans biais de la transformée de Laplace d'une loi $\ExpDist(1)$.
+Il s'agit d'un estimateur asymptotiquement sans biais de la transformée de Laplace d'une loi $\ExpDist(1)$.
 \end{solution}
 \part On définit la statistique de test suivante 
 $$
@@ -213,7 +328,7 @@ S_n=n\int_{0}^\infty[\psi'_n(\theta)(1+\theta) + \psi_n(\theta)]^2\e^{-\theta}\t
 $$
 Quel est votre interprétation de cette statistique de test?
 \begin{solution}
-On retrouve dans le carré sous l'intégrale, l'équation différentielle satisfaite par $\psi$ dans le cas où les données suivent une loi exponentielle. On intègre pour prendre en compte l'ensemble du domaine de définition de la transformée de Laplace. On ajoute la fonction exponentielle pour rendre la statistique de test intégrable. L'avantage est d'obtenir une test de test explicite, voir la question d'après.
+On retrouve dans le carré sous l'intégrale, l'équation différentielle satisfaite par $\psi$ dans le cas où les données suivent une loi exponentielle. On intègre pour prendre en compte l'ensemble du domaine de définition de la transformée de Laplace. On ajoute la fonction exponentielle pour rendre la statistique de test intégrable. L'avantage est d'obtenir une statistique de test explicite, voir la question d'après.
 \end{solution}
 \part Montrer que l'on peut estimer $S_n$ par 
 $$

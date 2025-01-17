@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.23)  2 FEB 2023 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.27)  6 JAN 2025 17:41
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **TD1_MDD.tex
 (./TD1_MDD.tex
@@ -843,43 +843,50 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 109
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (3.41711pt too wide) in paragraph at lines 109--110
-[]\T1/cmr/m/n/10.95 L'objectif est de déter-miner l'estimateur du max-i-mum de 
-vraisem-blance du max-i-mum de vraisem-
- []
-
-[1
+) [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
+Overfull \hbox (4.11559pt too wide) in paragraph at lines 183--185
+\T1/cmr/m/n/10.95 On peut véri-fier la co-hérence de l'estimation. En prenant $
+\OML/cmm/m/it/10.95 c \OT1/cmr/m/n/10.95 = 0$\T1/cmr/m/n/10.95 , on re-tombe su
+r l'estimateur
+ []
+
+
+Overfull \vbox (5.03749pt too high) detected at line 216
+ []
+
+[2] [3]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
+01.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+) [4]
+Underfull \hbox (badness 10000) in paragraph at lines 347--349
 
  []
 
-<../figures/power_LT_VS_KS.pdf, id=38, 504.88625pt x 360.34625pt>
+[5]
+<../figures/power_LT_VS_KS.pdf, id=69, 504.88625pt x 360.34625pt>
 File: ../figures/power_LT_VS_KS.pdf Graphic file (type pdf)
 <use ../figures/power_LT_VS_KS.pdf>
-Package pdftex.def Info: ../figures/power_LT_VS_KS.pdf  used on input line 255.
+Package pdftex.def Info: ../figures/power_LT_VS_KS.pdf  used on input line 370.
 
 (pdftex.def)             Requested size: 328.82707pt x 234.68965pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3] (./TD1_MDD.bbl) [4 <../figures/power_LT_VS_KS.pdf>]
-This exam contains 2 questions with 9 parts, 0 subparts, and 0 subsubparts.
+ (./TD1_MDD.bbl [6 <../figures/power_LT_VS_KS.pdf>]) [7]
+This exam contains 3 questions with 16 parts, 0 subparts, and 0 subsubparts.
 (./TD1_MDD.aux)
 Package rerunfilecheck Info: File `TD1_MDD.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23332 strings out of 478268
- 423620 string characters out of 5846346
- 709581 words of memory out of 5000000
- 41130 multiletter control sequences out of 15000+600000
- 483418 words of font info for 61 fonts, out of 8000000 for 9000
+ 23392 strings out of 478268
+ 424715 string characters out of 5846347
+ 709803 words of memory out of 5000000
+ 41175 multiletter control sequences out of 15000+600000
+ 483732 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 100i,11n,104p,466b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 100i,11n,104p,473b,592s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
 /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
@@ -897,11 +904,12 @@ live/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texli
 ve/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive
 /2022/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2
 022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/202
-2/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on TD1_MDD.pdf (4 pages, 202249 bytes).
+2/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2022/
+texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on TD1_MDD.pdf (7 pages, 245677 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
+ 177 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
