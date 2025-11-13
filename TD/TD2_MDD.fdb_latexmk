@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex TD2_MDD"] 1701192924 "TD2_MDD.aux" "TD2_MDD.bbl" "TD2_MDD" 1701193738
-  "../lecture_notes/mdd.bib" 1678265392 13012 aa0e1e00edc26323ee2dd8f517ae371f ""
+["bibtex TD2_MDD"] 1760019655 "TD2_MDD.aux" "TD2_MDD.bbl" "TD2_MDD" 1760029677
+  "../lecture_notes/mdd.bib" 1757684698 13757 d49a81ff4e32276f7fd364af0ce53a49 ""
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "TD2_MDD.aux" 1701193738 2140 e15c66e420e625b8c204d37c1dd656cf "pdflatex"
+  "TD2_MDD.aux" 1760029676 2325 5c88ed05a7056373d999c5d487847955 "pdflatex"
   (generated)
   "TD2_MDD.bbl"
   "TD2_MDD.blg"
-["pdflatex"] 1701193738 "TD2_MDD.tex" "TD2_MDD.pdf" "TD2_MDD" 1701193738
+["pdflatex"] 1760029676 "TD2_MDD.tex" "TD2_MDD.pdf" "TD2_MDD" 1760029677
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -20,7 +20,6 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecsl1095.tfm" 1136768653 3584 91bcd1ec8de84adb306899ddf050f500 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecss1095.tfm" 1136768653 3584 8ece407347b270c252c46fdfaef5a9ef ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ecti1095.tfm" 1136768653 3072 b73d2778cc3af44970de4de5e032d7f6 ""
-  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1095.tfm" 1136768653 1536 a988bfe554c1f79514bd46d13c3c64ce ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -50,9 +49,9 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb" 1215737283 154600 ea54091d31de803b613ba9e80ca51709 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb" 1215737283 135942 859a90cad7494a1e79c94baf546d7de5 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb" 1215737283 110032 35e0196b03e20c9bc327f34ecd2026f9 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb" 1215737283 164227 3df942b4ff2124425d8fb1b6d3e01c7a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb" 1215737283 145929 f25e56369a345c4ff583b067cd87ce8e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb" 1215737283 196446 8fbbe4b97b83e5182def6d29a44e57fb ""
-  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb" 1215737283 169670 48d12e69c9a3b23c81f6d703ccbd4554 ""
   "/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2022/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/local/texlive/2022/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1576625341 40635 c40361e206be584d448876bba8a64a3b ""
@@ -141,7 +140,6 @@
   "/usr/local/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty" 1622581934 5049 969aec05d5f39c43f8005910498fcf90 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/base/size11.clo" 1636758526 8464 74db94825c407b51399ca17d9bd38a3d ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmss.fd" 1622581934 2621 95d97d14f2ca40d81472d6fd62553199 ""
-  "/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd" 1622581934 2443 6dd9a5deeddddfcceb01d1932590ebad ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/exam/exam.cls" 1614638284 286382 b210b790c86d89aeccb508074bd001ae ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty" 1578002852 41601 9cf6c5257b1bc7af01a58859749dd37a ""
@@ -189,10 +187,10 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1664288841 2826439 dee74aad735af7933a71799c9e035791 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "TD2_MDD.aux" 1701193738 2140 e15c66e420e625b8c204d37c1dd656cf "pdflatex"
-  "TD2_MDD.bbl" 1701192924 501 e9adcf07862a8de9e480e906f02860b4 "bibtex TD2_MDD"
+  "TD2_MDD.aux" 1760029676 2325 5c88ed05a7056373d999c5d487847955 "pdflatex"
+  "TD2_MDD.bbl" 1760019655 501 e9adcf07862a8de9e480e906f02860b4 "bibtex TD2_MDD"
   "TD2_MDD.out" 0 -1 0 "pdflatex"
-  "TD2_MDD.tex" 1701193737 10775 932c883181d8a0f92841ab96e7ba3366 ""
+  "TD2_MDD.tex" 1760029676 14147 03c3b2504bc894cf80c49a5b2201b9e0 ""
   (generated)
   "TD2_MDD.aux"
   "TD2_MDD.log"
