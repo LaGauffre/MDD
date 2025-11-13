@@ -153,7 +153,7 @@ Les probabilités de décès $\widehat{q}_x$ ou les taux de mortalité $\widehat
   \item Exposition trop faible 
   \item Nombre de décès trop faible 
 \end{itemize}
-Nous pouvons réduire le bruit inhérent à ces taux bruts via des méthodes de lissage et de fermeture des tables aux grands âges. Cela permet aussi de réduire 
+Nous pouvons réduire le bruit inhérent à ces taux bruts via des méthodes de lissage et de fermeture des tables aux grands âges. 
 \subsection{Lissage paramétrique}
 Les méthodes de lissage paramétrique consiste à spécifier une forme paramétrique pour les taux instantanée de décès ou les probabilité de décès. Pour les taux instantanées de décès on trouve
 \begin{itemize}
@@ -192,7 +192,7 @@ La calibration de ces modèles se fait de deux façons
   \item Par le maximum de vraisemblance sans utiliser les taux bruts
   \item Par les moindre carrés ordinaires, en minimisant l'écart entre les taux bruts et les taux du modèle paramétrique avec 
   $$
-\argmax_{\theta\in\Theta}\sum_{x\geq 0}w_x(\widehat{q}_x - q_x(\theta))^2\text{ ou } \argmax_{\theta\in\Theta}\sum_{x\geq 0}w_x(\widehat{\mu}_x - \mu_x(\theta))^2
+\argmin_{\theta\in\Theta}\sum_{x\geq 0}w_x(\widehat{q}_x - q_x(\theta))^2\text{ ou } \argmin_{\theta\in\Theta}\sum_{x\geq 0}w_x(\widehat{\mu}_x - \mu_x(\theta))^2
   $$
 \end{itemize}
 \begin{remark}
@@ -205,7 +205,7 @@ Cela va pénaliser les taux bruts aux grands âges.
 \subsection{Lissage de Whittaker-Henderson}
 Il est aussi possible de lisser la série des taux bruts sans faire d'hypothèse paramétrique. On cherche à remplacer une série de donnée $y = (y_i)_{i=1,\ldots, n}$ (les probabilités de décès, les taux de décès ou une fonction de ces derniers),  par $\theta^\lambda = (\theta^\lambda_i)_{i = 1,\ldots, n}$. Le lissage de Whittaker-Henderson, expliqué par exemple dans le papier de \citet{Biessy2023}, consiste en un arbitrage entre la fidélité au données $y$ et la régularité des taux lissés $\theta^\lambda$. Les taux lissés sont solution du problème d'optimisation 
 $$
-\theta^\lambda = \argmax_{\theta}  F(y,w, \theta) + \lambda R(\theta),
+\theta^\lambda = \argmin_{\theta}  F(y,w, \theta) + \lambda R(\theta),
 $$
 où $ w = (w_i)_{i=1,\ldots, n}$ est un vecteur de poids et $\lambda >0$ qui traduit le compromis entre fidélité $F$ et régularité $R$. Le critère de fidélité s'écrit 
 $$
@@ -262,7 +262,7 @@ a pour solution
 $$
 \theta^\lambda = \left(W + P_\lambda\right)^{-1}Wy.
 $$ 
-On peut appliquer le lisage brutalement sur les probabilités de décès ou les taux brut à l'aid de la fonction \href{https://search.r-project.org/CRAN/refmans/pracma/html/whittaker.html}{whittaker} du package \texttt{pracma}. L'article de \citet{Biessy2023} rationnalise le choix  de Pour appliquer cette méthode, des observations $y$, des poids $w$, et du paramètre de lissage $\lambda$ en introduisant un modèle de statistique Bayésienne expliquer dans la \cref{app:WH}. on retiendra que 
+On peut appliquer le lisage brutalement sur les probabilités de décès ou les taux brut à l'aide de la fonction \href{https://search.r-project.org/CRAN/refmans/pracma/html/whittaker.html}{whittaker} du package \texttt{pracma}. L'article de \citet{Biessy2023} rationnalise le choix  de Pour appliquer cette méthode, des observations $y$, des poids $w$, et du paramètre de lissage $\lambda$ en introduisant un modèle de statistique Bayésienne expliquer dans la \cref{app:WH}. on retiendra que 
 \begin{itemize}
   \item Les données a utiliser sont
   $$
@@ -321,7 +321,7 @@ La statistique de test suit un loi binomial $Z\sim(n, 0.5)$. On utilise l'approx
 $$
 \frac{Z - np}{\sqrt{np(1-p)}}\sim\NormalDist(0,1).
 $$
-dès que $n$ est assez grand ($n\approx 25$). Il arive que le \textit{post-processing} des aux brut conduisent à, par exemple, une sous-estimation aux âges jeunes et une sur-estimation aux âges plus avancées. Une telle situation permet de passer le test des signes. On peut alors procéder à un autre test, appelé test des runs de Wald-Wolfowitz voir l'article wikipédia \url{https://en.wikipedia.org/wiki/Wald%E2%80%93Wolfowitz_runs_test}.
+dès que $n$ est assez grand ($n\approx 25$). Il arive que le \textit{post-processing} des taux brut conduisent à, par exemple, une sous-estimation aux âges jeunes et une sur-estimation aux âges plus avancées. Une telle situation permet de passer le test des signes. On peut alors procéder à un autre test, appelé test des runs de Wald-Wolfowitz voir l'article wikipédia \url{https://en.wikipedia.org/wiki/Wald%E2%80%93Wolfowitz_runs_test}.
 
 On peut comparer plusieurs méthodes de lissages en terme d'erreurs aux taux bruts en calculant par exemple des ecarts moyens quadratiques
 $$
@@ -366,11 +366,11 @@ La legislation impose l'utilisation de ces tables dans le cadre des contrats d'a
 % q_{x,t_0, a_0} = \frac{d_{x,t_0, a_0}}{E_{x,t_0, a_0}},
 % $$
 % suivant le type de données disponibles. 
-La construction des tables générationnelles à partir des données bruts nécessite l'introduction d'un outil graphique: le diagramme de Lexis, voir \cref{fig:lexis_1}.
+La construction des tables générationnelles à partir des données bruts nécessite l'introduction d'un outil graphique: le diagramme de Lexis.
 \subsection{Diagramme de Lexis}
 Le parcours des individus d'une population est représenté sur un diagramme de Lexis 
 \begin{itemize}
-\item Abscisse: $t = $ année calendaire ,
+\item Abscisse: $t = $ année calendaire§,
 \item Ordonnée: $x=$ âge,
 \end{itemize}
 
@@ -499,7 +499,7 @@ L'exposition exacte est donnée par la somme des longueurs des segments (divisé
 $$
 E_{x,t} =  0.08 + 0.3 + 0.6 + 0.42 + 0.33 = 1.73.
 $$
-La probabilité de décès d'un individu d'âge $x$ durant la période $[t, t+1]$ est égale à 
+Le taux de décès d'un individu d'âge $x$ durant la période $[t, t+1]$ est égale à 
 $$
 \mu_{x,t} = \frac{1}{1.73} = 0.57.
 $$
@@ -576,7 +576,7 @@ En l'absence d'information sur la distribution des naissances au cours des l'ann
 $$
 E_{x,t} \approx  \frac{1}{2}[P_{x,t}+ P_{x,t+1}] + \frac{1}{6}[D^L_{x,t}- D^U_{x,t}] = 1.7.
 $$
-La probabilité de décès d'un individu d'âge $x$ durant la période $[t, t+1]$ est égale à 
+Le taux de décès d'un individu d'âge $x$ durant la période $[t, t+1]$ est égale à 
 $$
 \widehat{\mu}_{x,t} = \frac{1}{1.7} = 0.59.
 $$
@@ -623,7 +623,7 @@ L'exposition est donnée par la somme des longueurs des segments dans le parall�
 $$
 E_{x,a} = 0.8+1+0.4 =2.2.
 $$
-La probabilité de décès des individus d'âge $x$ né l'année $a$ est donnée par 
+Le taux de décès des individus d'âge $x$ né l'année $a$ est donnée par 
 $$
 q_{x,a} = 1/2.2 = 0.45.
 $$
@@ -687,7 +687,7 @@ $$
 % $$
 % L^c(x,a) \approx 0.8 + 0.4 + 0.3 = 1.5
 % $$
-% La probabilité de décès des individus d'âge $x$ né l'année $a$ est donnée par 
+% Le taux de décès des individus d'âge $x$ né l'année $a$ est donnée par 
 % $$
 % q_{x,a} = 0/1.5 = 0.
 % $$
@@ -739,15 +739,15 @@ D_{x,t}\sim \BinomialDist( E_{x,t}^0, q_{x,t})\text{, avec }\E(D_{x,t}) = E_{x,t
   g\left[\E\left(\frac{D_{x,t}}{E_{x,t}}\right)\right] =  \eta_{x,t}.
   $$
   Dans le cadre du modèle de Poisson, on utilise la fonction log\footnote{$\log(\mu_{x,t})$}. Pour le modèle binomial la fonction logit\footnote{$\log(q_{x,t}/(1-q_{x,t}))$}. Ce sont les fonctions de lien canonique des modèles linéaires généralisés, voir \citet{Currie2014} pour une discussion sur les fonctions de liens dans le cadre des modèles de mortalités stochastiques.
-  \item Les contraintes sur les paramètres permettant de rendre le modèle identifiable. On applique au vecteur de paramètres
+  \item Les contraintes sur les paramètres permettant de rendre le modèle identifiable. Si le prédicteur est invariant lorsqu'on applique une transformation $v$ définie par
+$$
+  v(\theta) : = \tilde{\theta} = \left(\tilde{\alpha}_x,\tilde{\beta}_{x}^{(1)},\ldots, \tilde{\beta}_x^{(N)},\tilde{\kappa}_{t}^{(1)},\ldots, \tilde{\kappa}_{t}^{(N)}, \tilde{\beta}^{(0)}, \tilde{\gamma}_{t-x}\right).
+$$
+au vecteur de paramètres
   $$
   \theta = \left(\alpha_x,\beta_{x}^{(1)},\ldots, \beta_x^{(N)},\kappa_{t}^{(1)},\ldots, \kappa_{t}^{(N)}, \beta^{(0)}, \gamma_{t-x}\right)
   $$
-  une transformation $v$ avec 
-$$
-  \tilde{\theta} = \left(\tilde{\alpha}_x,\tilde{\beta}_{x}^{(1)},\ldots, \tilde{\beta}_x^{(N)},\tilde{\kappa}_{t}^{(1)},\ldots, \tilde{\kappa}_{t}^{(N)}, \tilde{\beta}^{(0)}, \tilde{\gamma}_{t-x}\right).
-$$
-La conséquence est une perte de degré de liberté sans changer le prédicteur $\eta_{x,t}$.
+  alors des contraintes sont nécessaires. La conséquence est une perte de degré de liberté sans changer le prédicteur $\eta_{x,t}$.
 \end{enumerate}
 
 \begin{ex}
@@ -790,7 +790,7 @@ Voici quelques exemples de modèles de type GAPC.
   $$
 \sum_{t}\kappa_t = 0\text{, }\sum_{a=t_1-x_k}^{t_n-x_1}\gamma_a=0\text{, }\sum_{a=t_1-x_k}^{t_n-x_1}a\gamma_a=0,
 $$
-où $x_1 = \min x$, $t_1=\min t$, $x_k = \max x$ et $t_n = \max t_n$. L'effet cohorte fluctue autour de $0$ sans faire apparaître de tendance. Les contraintes sont imposées d'abord par une regression linéaire de $\gamma_{t-x}$ sur $t-x$ avec 
+où $x_1 = \min x$, $t_1=\min t$, $x_k = \max x$ et $t_n = \max t$. L'effet cohorte fluctue autour de $0$ sans faire apparaître de tendance. Les contraintes sont imposées d'abord par une regression linéaire de $\gamma_{t-x}$ sur $t-x$ avec 
 $$
 \gamma_{t-x} = \phi_1 + \phi_2(t-x) + \epsilon_{t-x},\text{ }\epsilon_{t-x}\sim\NormalDist(0,\sigma^2).
 $$
@@ -805,13 +805,13 @@ $$
 Les composantes temporelles sont modélisés par une marche aléatoire bivariée. Ce modèle est identifiable donc aucune contrainte n'est imposée.
 \end{enumerate}
 \end{ex}
-Les modèles sont ajustées au données via le maximum de vraisemblance via le package StMoMo, voir \citet{Villegas2018}. Soit $\Data = (D_{x,t}, E_{x,t})_{x,t}$ les données disponibles et $\theta = (\mu_{x,t})_{x,t}\text{ ou }(q_{x,t})_{x,t}$ les paramètres. La vraisemblance s'écrit 
+Les modèles sont ajustées au données via le maximum de vraisemblance via le package StMoMo, voir \citet{Villegas2018}. Soit $\Data = (D_{x,t}, E_{x,t})_{x,t}$ les données disponibles et $\theta = (\mu_{x,t})_{x,t}\text{ ou }(q_{x,t})_{x,t}$ les paramètres. La log-vraisemblance s'écrit 
 $$
-\mathcal{L}(\Data;\theta) = \sum_x\sum_t w_{x,t}\left\{D_{x,t}\log(\mu_{x,t}E_{x,t})-E_{x,t}\mu_{x,t}-\log(D_{x,t}!)\right\}
+l(\Data;\theta) = \sum_x\sum_t w_{x,t}\left\{D_{x,t}\log(\mu_{x,t}E_{x,t})-E_{x,t}\mu_{x,t}-\log(D_{x,t}!)\right\}
 $$
 dans le modèle de Poisson et 
 $$
-\mathcal{L}(\Data;\theta) = \sum_x\sum_t w_{x,t}\left\{\log\binom{E_{x,t}}{D_{x,t}} + D_{x,t}\log(q_{x,t}) + (E_{x,t} - D_{x,t})\log(1-q_{x,t})\right\}.
+l(\Data;\theta) = \sum_x\sum_t w_{x,t}\left\{\log\binom{E_{x,t}}{D_{x,t}} + D_{x,t}\log(q_{x,t}) + (E_{x,t} - D_{x,t})\log(1-q_{x,t})\right\}.
 $$
 dans le modèle binomial, avec 
 $$
@@ -842,9 +842,9 @@ où
   $$
   est le nombre d'observation utilisée pour la calbration et $\nu$ est le nombre de paramètre effectif du modèle (eu égard au jeu de contraintes).
 \end{itemize}
-L'ajustement global du modèle est mesuré via les critère d'information standard comme l'AIC et le BIC. La capacité prédictive du modèle s'évalue au moyen d'une ereur moyenne absolue ou quadratique calculée le cadre d'une procedure de validation croisée 
+L'ajustement global du modèle est mesuré via les critère d'information standard comme l'AIC et le BIC. La capacité prédictive du modèle s'évalue au moyen d'une erreur moyenne absolue ou quadratique calculée le cadre d'une procedure de validation croisée 
 $$
-\text{MAE} = \frac{1}{\bar{K}}\sum_x\sum_{t}(1-w_{w,t}) |D_{x,t} - \widehat{D}_{x,t}|,
+\text{MAE} = \frac{1}{\bar{K}}\sum_x\sum_{t}(1-w_{x,t}) |D_{x,t} - \widehat{D}_{x,t}|,
 $$
 avec $\bar{K} = \sum_{x}\sum_{t}(1-w_{x,t})$. La comparaison de la mortalité au sein de deux populations s'articule autour d'un outil graphique: le \textit{Standardized Mortality Ratio}. Il s'agit du graphique représentant le ratio des probabilités de décès sur des probabilités de décès de référence. On compare ainsi
 \begin{itemize}

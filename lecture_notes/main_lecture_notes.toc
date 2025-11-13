@@ -27,7 +27,7 @@
 \contentsline {section}{\numberline {4.2}Inférence des paramètres}{20}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Test d'hypothèse}{21}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Significativité des coefficients: le test de Wald}{21}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Significativité du modèle: le test du rapport de vraisemblance}{21}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.2}Significativité du modèle: le test du rapport de vraisemblance}{22}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Vérification de l'hypothèse de proportionalité}{22}{subsection.4.3.3}%
 \contentsline {chapter}{\numberline {5}Table de mortalité}{24}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Estimation des probabilités de décès et des taux de mortalité}{25}{section.5.1}%

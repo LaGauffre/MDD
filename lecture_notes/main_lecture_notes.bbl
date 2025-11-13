@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -18,6 +18,14 @@ Hirotogu Akaike.
 \newblock In \emph{Springer Series in Statistics}, pages 199--213. Springer New
   York, 1998.
 \newblock \doi{10.1007/978-1-4612-1694-0_15}.
+
+\bibitem[Akaike(1974)]{Akaike1974}
+Hirotugu Akaike.
+\newblock \emph{A New Look at the Statistical Model Identification}, pages
+  215--222.
+\newblock Springer New York, 1974.
+\newblock ISBN 9781461216940.
+\newblock \doi{10.1007/978-1-4612-1694-0_16}.
 
 \bibitem[Barigou et~al.(2022)Barigou, Goffard, Loisel, and Salhi]{Barigou2022}
 Karim Barigou, Pierre-Olivier Goffard, St{\'{e}}phane Loisel, and Yahia Salhi.

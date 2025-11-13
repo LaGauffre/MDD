@@ -131,7 +131,7 @@ Les critères d'informations mesurent l'ajustement du modèle aux données. Ils 
 $$
 \text{AIC} = 2k - 2 l(\Data;\hat{\theta}),
 $$
-où $k$ désigne le nombre de paramètre du modèle, voir \citet{Akaike1998}. Le Bayesian Information Criteria (BIC) est défini par 
+où $k$ désigne le nombre de paramètre du modèle, voir \citet{Akaike1974,Akaike1998}. Le Bayesian Information Criteria (BIC) est défini par 
 $$
 \text{BIC} = k\ln(n) - 2 l(\Data;\hat{\theta}),
 $$
@@ -158,9 +158,9 @@ D_n=\max(D_-,D_+)
 $$
 où
 $$
-D_- =\underset{i = 1,\ldots n}{\max} i/n -F\left(t_{(i)}; \theta\right),\text{ et }D_- =\underset{i = 1,\ldots n}{\max} F\left(t_{(i+1)}; \theta\right) - i/n.
+D_- =\underset{i = 1,\ldots n}{\max} i/n -F\left(t_{(i)}; \theta\right),\text{ et }D_- =\underset{i = 1,\ldots n}{\max} F\left(t_{(i+1)}; \theta\right) - i/n,
 $$ 
-On a le résultat de convergence suivant 
+où $t_{(1)}<\ldots < t_{(n)}$ sont ls statistiques d'ordres. On a le résultat de convergence suivant 
 \begin{equation}\label{eq:convergence_ks}
 \sqrt{n}D_n\overset{}{\rightarrow} K\text{ en loi,}
 \end{equation}

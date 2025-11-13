@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main_lecture_notes"] 1701188294 "main_lecture_notes.aux" "main_lecture_notes.bbl" "main_lecture_notes" 1701188333
+["bibtex main_lecture_notes"] 1760018903 "main_lecture_notes.aux" "main_lecture_notes.bbl" "main_lecture_notes" 1763028441
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main_lecture_notes.aux" 1701188333 21772 969a5f82966e443c244c4c0c3b67ec32 "pdflatex"
-  "mdd.bib" 1678265392 13012 aa0e1e00edc26323ee2dd8f517ae371f ""
+  "main_lecture_notes.aux" 1763028441 21267 97bdba0f4118bb8217b6e5fa08f8f315 "pdflatex"
+  "mdd.bib" 1757684698 13757 d49a81ff4e32276f7fd364af0ce53a49 ""
   (generated)
   "main_lecture_notes.bbl"
   "main_lecture_notes.blg"
-["pdflatex"] 1701188330 "main_lecture_notes.tex" "main_lecture_notes.pdf" "main_lecture_notes" 1701188333
+["pdflatex"] 1763028438 "main_lecture_notes.tex" "main_lecture_notes.pdf" "main_lecture_notes" 1763028441
   "../figures/Helgman_pollard_model.png" 1676374658 98590 e42cccc645547efd1100d7aeffa2dc55 ""
   "../figures/Lexis_expo_computation.png" 1677590356 162083 3aa2ca37ce30bf8f90e3ffae0fe2d5b7 ""
   "../figures/d_S_h_H_parametric.pdf" 1674667715 11646 bd1ad7a8c7bfe319ccf171439f51f08b ""
@@ -310,16 +310,16 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1664288841 2826439 dee74aad735af7933a71799c9e035791 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "includes/chap_III_nonparametric.tex" 1701188330 14469 d10418513200128d7463ebe4c013d6bd ""
-  "includes/chap_II_parametric.tex" 1700132692 9764 fb72443d71576310fdd2770f8aaa2d02 ""
-  "includes/chap_IV_PH_models.tex" 1678971890 10806 d6879e75083d826038d2c0bad0326f33 ""
-  "includes/chap_I_introduction.tex" 1700132375 21077 7ab4f165acbca1d4adce23a2847bca61 ""
-  "includes/chap_V_mortality_table.tex" 1680177682 46429 52cd09086d93d30e3710103ecc075384 ""
-  "main_lecture_notes.aux" 1701188333 21772 969a5f82966e443c244c4c0c3b67ec32 "pdflatex"
-  "main_lecture_notes.bbl" 1701188295 8907 6974465f646efb4fd04d17b5a8daa256 "bibtex main_lecture_notes"
-  "main_lecture_notes.out" 1701188333 9360 619c8e7131a40a662f2f3c0c697b57f7 "pdflatex"
-  "main_lecture_notes.tex" 1701187405 6463 9eed965840aca3b640b23428c4a716f3 ""
-  "main_lecture_notes.toc" 1701188333 4742 21ee6e24fa819ccf50762c695ec83749 "pdflatex"
+  "includes/chap_III_nonparametric.tex" 1731488067 14774 f69598a179062fe3f49fcdcd4318313e ""
+  "includes/chap_II_parametric.tex" 1757685299 10172 8dc12bfc9ac553173e8873684d715502 ""
+  "includes/chap_IV_PH_models.tex" 1760019137 11682 5cc24f2ed8f71e4b0d4a14094651afc8 ""
+  "includes/chap_I_introduction.tex" 1729004550 21103 6cde545a7b465356c672e1061583c468 ""
+  "includes/chap_V_mortality_table.tex" 1763028438 54750 5c6e03ce9e2252fe9cf6af18de903159 ""
+  "main_lecture_notes.aux" 1763028441 21267 97bdba0f4118bb8217b6e5fa08f8f315 "pdflatex"
+  "main_lecture_notes.bbl" 1760018904 8992 9d4dc57383a5c009aaeb377e0909c1b6 "bibtex main_lecture_notes"
+  "main_lecture_notes.out" 1763028441 10188 d1c47ec34b5f082cf1bd9606e4a64a04 "pdflatex"
+  "main_lecture_notes.tex" 1733242154 6464 67d921802237063061e546b3ee8fd2fe ""
+  "main_lecture_notes.toc" 1763028441 4906 da0e9693e0a9d71391f353f8e84c918a "pdflatex"
   (generated)
   "main_lecture_notes.aux"
   "main_lecture_notes.log"

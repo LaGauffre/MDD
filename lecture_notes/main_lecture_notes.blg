@@ -4,45 +4,45 @@ The top-level auxiliary file: main_lecture_notes.aux
 The style file: plainnat.bst
 Database file #1: mdd.bib
 Warning--empty journal in Thatcher1998
-You've used 29 entries,
+You've used 30 entries,
             2773 wiz_defined-function locations,
-            832 strings with 10433 characters,
-and the built_in function-call counts, 12555 in all, are:
-= -- 1193
-> -- 563
-< -- 26
-+ -- 197
-- -- 168
-* -- 1016
-:= -- 1947
-add.period$ -- 112
-call.type$ -- 29
-change.case$ -- 142
-chr.to.int$ -- 29
-cite$ -- 59
-duplicate$ -- 586
-empty$ -- 1081
-format.name$ -- 217
-if$ -- 2619
+            842 strings with 10615 characters,
+and the built_in function-call counts, 13062 in all, are:
+= -- 1245
+> -- 573
+< -- 28
++ -- 201
+- -- 171
+* -- 1045
+:= -- 2018
+add.period$ -- 117
+call.type$ -- 30
+change.case$ -- 145
+chr.to.int$ -- 30
+cite$ -- 61
+duplicate$ -- 616
+empty$ -- 1129
+format.name$ -- 221
+if$ -- 2736
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 28
-newline$ -- 177
-num.names$ -- 116
-pop$ -- 239
+missing$ -- 30
+newline$ -- 184
+num.names$ -- 120
+pop$ -- 252
 preamble$ -- 1
-purify$ -- 114
+purify$ -- 117
 quote$ -- 0
-skip$ -- 423
+skip$ -- 445
 stack$ -- 0
-substring$ -- 540
-swap$ -- 60
-text.length$ -- 2
+substring$ -- 574
+swap$ -- 70
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 314
+type$ -- 320
 warning$ -- 1
-while$ -- 127
+while$ -- 133
 width$ -- 0
-write$ -- 427
+write$ -- 444
 (There was 1 warning)
